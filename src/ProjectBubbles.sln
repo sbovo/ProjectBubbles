@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBubbles.Android", "ProjectBubbles\ProjectBubbles.Android\ProjectBubbles.Android.csproj", "{A2EBEE4B-18E8-45C1-903D-36E772EE2A5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBubbles.Android", "ProjectBubbles.Android\ProjectBubbles.Android.csproj", "{A2EBEE4B-18E8-45C1-903D-36E772EE2A5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBubbles.iOS", "ProjectBubbles\ProjectBubbles.iOS\ProjectBubbles.iOS.csproj", "{913B14FF-D6B9-4C60-88E9-AA856151ADDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBubbles.iOS", "ProjectBubbles.iOS\ProjectBubbles.iOS.csproj", "{913B14FF-D6B9-4C60-88E9-AA856151ADDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBubbles.UWP", "ProjectBubbles\ProjectBubbles.UWP\ProjectBubbles.UWP.csproj", "{EC15745E-F079-4EBB-B3B4-C96F346799D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBubbles.UWP", "ProjectBubbles.UWP\ProjectBubbles.UWP.csproj", "{EC15745E-F079-4EBB-B3B4-C96F346799D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectBubbles.MobileAppService", "ProjectBubbles\ProjectBubbles.MobileAppService\ProjectBubbles.MobileAppService.csproj", "{2306801A-85AC-4241-9D0E-1C2820138DF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectBubbles.MobileAppService", "ProjectBubbles.MobileAppService\ProjectBubbles.MobileAppService.csproj", "{2306801A-85AC-4241-9D0E-1C2820138DF1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectBubbles", "ProjectBubbles\ProjectBubbles\ProjectBubbles.csproj", "{81D7CE1A-8CE1-4EF1-89B9-45FA61890FD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectBubbles", "ProjectBubbles\ProjectBubbles.csproj", "{81D7CE1A-8CE1-4EF1-89B9-45FA61890FD5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{ED9923D3-6A82-4D8E-B9D4-956DD74B3198}"
 EndProject
