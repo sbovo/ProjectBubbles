@@ -11,9 +11,9 @@ namespace ProjectBubbles.Models
 
         public ItemRepository()
         {
-            Add(new Item { Id = Guid.NewGuid().ToString(), Text = "Item 1", Description = "This is an item description." });
-            Add(new Item { Id = Guid.NewGuid().ToString(), Text = "Item 2", Description = "This is an item description." });
-            Add(new Item { Id = Guid.NewGuid().ToString(), Text = "Item 3", Description = "This is an item description." });
+            Add(new Item { Id = Guid.NewGuid().ToString(), Date = "2019-12-01", Login = "chmaneu", Location = "EOS", Activity = "Azure Evergreen" });
+            Add(new Item { Id = Guid.NewGuid().ToString(), Date = "2019-12-01", Login = "sypontor", Location = "Home", Activity = "Git forever" });
+            Add(new Item { Id = Guid.NewGuid().ToString(), Date = "2019-12-01", Login = "sbovo", Location = "EOS", Activity = "HoloLens dev" });
         }
 
         public Item Get(string id)

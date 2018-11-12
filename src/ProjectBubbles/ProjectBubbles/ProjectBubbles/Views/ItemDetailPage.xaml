@@ -4,9 +4,9 @@
              x:Class="ProjectBubbles.Views.ItemDetailPage"
              Title="{Binding Title}">
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Item.Text}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Item.Description}" FontSize="Small"/>
+        <Label Text="Login:" FontSize="Medium" />
+        <Label Text="{Binding Item.Login}" FontSize="Small"/>
+        <Label Text="Location:" FontSize="Medium" />
+        <Label Text="{Binding Item.Location}" FontSize="Small"/>
     </StackLayout>
 </ContentPage>

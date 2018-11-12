@@ -26,8 +26,9 @@ namespace ProjectBubbles.Views
 
             var item = new Item
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                Date = "Date",
+                Login = "Login",
+                Location = "Location"
             };
 
             viewModel = new ItemDetailViewModel(item);

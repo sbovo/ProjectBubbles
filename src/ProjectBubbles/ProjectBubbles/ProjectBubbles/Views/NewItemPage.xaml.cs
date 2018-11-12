@@ -19,8 +19,9 @@ namespace ProjectBubbles.Views
 
             Item = new Item
             {
-                Text = "Item name",
-                Description = "This is an item description."
+                Date = "Date",
+                Login = "Login name",
+                Location = "This is the location"
             };
 
             BindingContext = this;

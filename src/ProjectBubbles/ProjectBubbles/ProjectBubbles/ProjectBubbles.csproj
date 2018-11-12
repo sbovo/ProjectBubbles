@@ -13,4 +13,8 @@
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />  
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Models\Models.csproj" />
+  </ItemGroup>
 </Project>
