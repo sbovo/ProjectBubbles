@@ -11,9 +11,11 @@ namespace ProjectBubbles.Models
 
         public ItemRepository()
         {
-            Add(new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "chmaneu", Location = "EOS", Activity = "Azure Evergreen" });
-            Add(new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "sypontor", Location = "Home", Activity = "Git forever" });
-            Add(new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "sbovo", Location = "EOS", Activity = "HoloLens dev" });
+            string Team = Guid.NewGuid().ToString();
+            // All users are in the same team
+            Add(new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "chmaneu", Location = "EOS", Activity = "Azure Evergreen" });
+            Add(new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "sypontor", Location = "Home", Activity = "Git forever" });
+            Add(new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "sbovo", Location = "EOS", Activity = "HoloLens dev" });
         }
 
         public Item Get(string id)

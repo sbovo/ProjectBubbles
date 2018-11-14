@@ -13,11 +13,12 @@ namespace ProjectBubbles.Services
         public MockDataStore()
         {
             items = new List<Item>();
+            string Team = Guid.NewGuid().ToString();
             var mockItems = new List<Item>
             {
-            new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "chmaneu", Location = "EOS - Mock", Activity = "Azure Evergreen" },
-            new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "sypontor", Location = "Home - Mock", Activity = "Git forever" },
-            new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "sbovo", Location = "EOS - Mock", Activity = "HoloLens dev" },
+            new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "chmaneu", Location = "EOS - Mock", Activity = "Azure Evergreen" },
+            new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "sypontor", Location = "Home - Mock", Activity = "Git forever" },
+            new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "sbovo", Location = "EOS - Mock", Activity = "HoloLens dev" },
             };
 
             foreach (var item in mockItems)
