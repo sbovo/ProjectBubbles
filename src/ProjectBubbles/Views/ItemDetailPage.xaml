@@ -5,7 +5,7 @@
              Title="{Binding Title}">
     <StackLayout Spacing="20" Padding="15">
         <Label Text="Login:" FontSize="Medium" />
-        <Label Text="{Binding Item.Login}" FontSize="Small"/>
+        <Label Text="{Binding Item.UserName}" FontSize="Small"/>
         <Label Text="Location:" FontSize="Medium" />
         <Label Text="{Binding Item.Location}" FontSize="Small"/>
     </StackLayout>

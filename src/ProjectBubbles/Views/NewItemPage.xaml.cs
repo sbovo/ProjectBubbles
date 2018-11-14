@@ -19,8 +19,8 @@ namespace ProjectBubbles.Views
 
             Item = new Item
             {
-                Date = "Date",
-                Login = "Login name",
+                MeetingDatePlus = "Date",
+                UserName = "Login name",
                 Location = "This is the location"
             };
 

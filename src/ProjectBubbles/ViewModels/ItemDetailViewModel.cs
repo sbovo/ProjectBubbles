@@ -9,7 +9,7 @@ namespace ProjectBubbles.ViewModels
         public Item Item { get; set; }
         public ItemDetailViewModel(Item item = null)
         {
-            Title = item?.Login;
+            Title = item?.UserName;
             Item = item;
         }
     }

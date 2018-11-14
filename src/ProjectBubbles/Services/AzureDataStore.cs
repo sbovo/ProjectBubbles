@@ -57,14 +57,14 @@ namespace ProjectBubbles.Services
 
         public async Task<bool> UpdateItemAsync(Item item)
         {
-            if (item == null || item.Id == null)
+            if (item == null || item.TeamId == null)
                 return false;
 
             var serializedItem = JsonConvert.SerializeObject(item);
             var buffer = Encoding.UTF8.GetBytes(serializedItem);
             var byteContent = new ByteArrayContent(buffer);
 
-            var response = await client.PutAsync(new Uri($"api/item/{item.Id}"), byteContent);
+            var response = await client.PutAsync(new Uri($"api/item/{item.TeamId}"), byteContent);
 
             return response.IsSuccessStatusCode;
         }

@@ -11,9 +11,9 @@ namespace ProjectBubbles.Models
 
         public ItemRepository()
         {
-            Add(new Item { Id = Guid.NewGuid().ToString(), Date = "2019-12-01", Login = "chmaneu", Location = "EOS", Activity = "Azure Evergreen" });
-            Add(new Item { Id = Guid.NewGuid().ToString(), Date = "2019-12-01", Login = "sypontor", Location = "Home", Activity = "Git forever" });
-            Add(new Item { Id = Guid.NewGuid().ToString(), Date = "2019-12-01", Login = "sbovo", Location = "EOS", Activity = "HoloLens dev" });
+            Add(new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "chmaneu", Location = "EOS", Activity = "Azure Evergreen" });
+            Add(new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "sypontor", Location = "Home", Activity = "Git forever" });
+            Add(new Item { TeamId = Guid.NewGuid().ToString(), MeetingDatePlus = "2019-12-01", UserName = "sbovo", Location = "EOS", Activity = "HoloLens dev" });
         }
 
         public Item Get(string id)
@@ -28,8 +28,8 @@ namespace ProjectBubbles.Models
 
         public void Add(Item item)
         {
-            item.Id = Guid.NewGuid().ToString();
-            items[item.Id] = item;
+            item.TeamId = Guid.NewGuid().ToString();
+            items[item.TeamId] = item;
         }
 
         public Item Find(string id)
@@ -50,7 +50,7 @@ namespace ProjectBubbles.Models
 
         public void Update(Item item)
         {
-            items[item.Id] = item;
+            items[item.TeamId] = item;
         }
     }
 }
