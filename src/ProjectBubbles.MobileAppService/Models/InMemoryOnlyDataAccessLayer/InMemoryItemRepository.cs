@@ -4,12 +4,12 @@ using System.Collections.Concurrent;
 
 namespace ProjectBubbles.Models
 {
-    public class ItemRepository : IItemRepository
+    public class InMemoryItemRepository : IItemRepository
     {
         private static ConcurrentDictionary<string, Item> items =
             new ConcurrentDictionary<string, Item>();
 
-        public ItemRepository()
+        public InMemoryItemRepository()
         {
             string Team = Guid.NewGuid().ToString();
             // All users are in the same team
