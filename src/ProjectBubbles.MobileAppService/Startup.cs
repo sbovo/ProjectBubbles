@@ -30,7 +30,8 @@ namespace ProjectBubbles.MobileAppService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<IItemRepository, InMemoryItemRepository>();
+            //services.AddSingleton<IItemRepository, InMemoryItemRepository>();
+            services.AddSingleton<IItemRepository, AzureTableItemRepository>();
 
             services.AddSwaggerGen(c =>
             {

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
+using Microsoft.WindowsAzure.Storage.Table;
+using ProjectBubbles.AzureTableDataAccessLayer;
 
 namespace ProjectBubbles.Models
 {
@@ -10,13 +12,32 @@ namespace ProjectBubbles.Models
         private static ConcurrentDictionary<string, Item> items =
             new ConcurrentDictionary<string, Item>();
 
+        CloudTable table;
+
+
+
+
         public AzureTableItemRepository()
         {
+            // Create or reference an existing table
+            table = Common.CreateTableAsync("TeamsEventsAndParticipations").GetAwaiter().GetResult();
+
             string Team = Guid.NewGuid().ToString();
             // All users are in the same team
-            Add(new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "chmaneu", Location = "EOS", Activity = "Azure Evergreen" });
-            Add(new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "sypontor", Location = "Home", Activity = "Git forever" });
-            Add(new Item { TeamId = Team, MeetingDatePlus = "2019-12-01", UserName = "sbovo", Location = "EOS", Activity = "HoloLens dev" });
+            TableItem item1 = new TableItem {
+                TeamId = Team, MeetingDatePlus = "2019-12-01-chmaneu", UserName = "chmaneu",
+                Location = "EOS", Activity = "Azure Evergreen" };
+            TableItem item2 = new TableItem {
+                TeamId = Team, MeetingDatePlus = "2019-12-01-sypontor", UserName = "sypontor",
+                Location = "Home", Activity = "Git forever" };
+            TableItem item3 = new TableItem {
+                TeamId = Team, MeetingDatePlus = "2019-12-01-sbovo", UserName = "sbovo",
+                Location = "EOS", Activity = "HoloLens dev" };
+
+
+            item1 = SamplesUtils.InsertOrMergeEntityAsync(table, item1).GetAwaiter().GetResult();
+            item2 = SamplesUtils.InsertOrMergeEntityAsync(table, item2).GetAwaiter().GetResult();
+            item3 = SamplesUtils.InsertOrMergeEntityAsync(table, item3).GetAwaiter().GetResult();
         }
 
         public Item Get(string id)

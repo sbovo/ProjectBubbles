@@ -29,13 +29,18 @@ namespace ProjectBubbles.AzureTableDataAccessLayer
             RowKey = meetingDatePlus;
         }
 
+        
+        public string TeamId
+        {
+            get => PartitionKey;
+            set => PartitionKey = value;
+        }
+        public string MeetingDatePlus
+        {
+            get => RowKey;
+            set => RowKey = value;
+        }
 
-
-
-
-
-        public string TeamId { get; set; }
-        public string MeetingDatePlus { get; set; }
         public ParticipationEnum Participation { get; set; }
         public string UserName { get; set; }
         public string Location { get; set; }

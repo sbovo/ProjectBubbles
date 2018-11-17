@@ -15,11 +15,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectBubbles", "ProjectBu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{ED9923D3-6A82-4D8E-B9D4-956DD74B3198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{2B9D0521-524D-45A4-8745-12DF906817BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{2B9D0521-524D-45A4-8745-12DF906817BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{9C5D4559-3921-451D-9071-853E16545352}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{6F50932D-9242-4D91-9F7A-C27CD66D8865}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F673AFD9-EB77-4B38-82C2-C1975967E284}"
+	ProjectSection(SolutionItems) = preProject
+		Secrets.txt = Secrets.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
