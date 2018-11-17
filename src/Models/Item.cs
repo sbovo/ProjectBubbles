@@ -2,6 +2,7 @@
 
 namespace ProjectBubbles.Models
 {
+    // TODO: In a refactoring task: Remove the dependancy between Item and TableItem.
     public class Item
     {
         /// <summary>
