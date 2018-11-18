@@ -47,13 +47,26 @@ namespace ProjectBubbles.Models
 
         public IEnumerable<Item> GetAll()
         {
-            return items.Values;
+            // TODO: Get all items for a PartitionKey and a RowLey starting with a date (ex: "2019-12-01-blabla")
+            TableOperation getAllOperation = TableOperation.Retrieve<TableItem>("28881b7a-d3e2-4eae-8687-0c4f4c5e6107", "2019-12-01");
+            var items = table.ExecuteAsync(getAllOperation).GetAwaiter().GetResult();
+            //SamplesUtils.ExecuteSimpleQuery();
+            return null;// items.Values;
         }
 
         public void Add(Item item)
         {
-            item.TeamId = Guid.NewGuid().ToString();
-            items[item.TeamId] = item;
+            TableItem tableItem = new TableItem
+            {
+                TeamId = item.TeamId,
+                MeetingDatePlus = item.MeetingDatePlus,
+                Participation = item.Participation,
+                UserName = item.UserName,
+                Location = item.Location,
+                Activity = item.Activity
+            };
+
+            tableItem = SamplesUtils.InsertOrMergeEntityAsync(table, tableItem).GetAwaiter().GetResult();
         }
 
         public Item Find(string id)
