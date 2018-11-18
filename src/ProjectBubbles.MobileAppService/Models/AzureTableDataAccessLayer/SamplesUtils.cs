@@ -1,8 +1,10 @@
-﻿using Microsoft.Azure;
+﻿using Helpers;
+using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using ProjectBubbles.AzureTableDataAccessLayer;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -36,6 +38,36 @@ class SamplesUtils
             throw;
         }
     }
+
+
+    public static async Task<List<TableItem>> GetList(CloudTable table, string partitionKey)
+    {
+        //Query
+        string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
+            QueryComparisons.Equal, partitionKey);
+        string RowKeyFilter = TableQuery.GenerateFilterCondition("RowKey",
+            QueryComparisons.GreaterThan, DateHelper.GetUNIVERSALStringFromDate(DateTime.Today.Subtract(new TimeSpan(1, 0, 0, 1))));
+        string combinedFilters = TableQuery.CombineFilters(partitionKeyFilter, TableOperators.And, RowKeyFilter);
+
+
+        TableQuery<TableItem> query = new TableQuery<TableItem>().Where(combinedFilters);
+
+        List<TableItem> results = new List<TableItem>();
+        TableContinuationToken continuationToken = null;
+        do
+        {
+            TableQuerySegment<TableItem> queryResults =
+                await table.ExecuteQuerySegmentedAsync(query, continuationToken);
+
+            continuationToken = queryResults.ContinuationToken;
+
+            results.AddRange(queryResults.Results);
+
+        } while (continuationToken != null);
+
+        return results;
+    }
+
 
     /// <summary>
     /// The Table Service supports two main types of insert operations.

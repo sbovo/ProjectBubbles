@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using ProjectBubbles.Models;
+using Helpers;
 
 namespace ProjectBubbles.Views
 {
@@ -19,9 +20,11 @@ namespace ProjectBubbles.Views
 
             Item = new Item
             {
-                MeetingDatePlus = "Date",
-                UserName = "Login name",
-                Location = "This is the location"
+                TeamId = "InternalPreview-0.0.1.0",
+                MeetingDatePlus = DateHelper.GetUNIVERSALStringFromDate(DateTime.Today),
+                UserName = "",
+                Location = "",
+                Activity = "work"
             };
 
             BindingContext = this;
@@ -29,6 +32,7 @@ namespace ProjectBubbles.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
+            Item.MeetingDatePlus += $"-{Item.UserName}";
             MessagingCenter.Send(this, "AddItem", Item);
             await Navigation.PopModalAsync();
         }

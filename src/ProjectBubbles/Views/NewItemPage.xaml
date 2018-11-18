@@ -4,14 +4,20 @@
              x:Class="ProjectBubbles.Views.NewItemPage"
              Title="New Item">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        <ToolbarItem Text="Save" Clicked="Save_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="save.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Login" FontSize="Medium" />
-            <Entry Text="{Binding Item.Login}" FontSize="Small" />
+            <Label Text="UserName" FontSize="Medium" />
+            <Entry Text="{Binding Item.UserName}" FontSize="Small" />
             <Label Text="Location" FontSize="Medium" />
-            <Editor Text="{Binding Item.Location}" FontSize="Small" Margin="0" />
+            <Entry Text="{Binding Item.Location}" FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
