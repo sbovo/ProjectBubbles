@@ -10,7 +10,7 @@ namespace ProjectBubbles
     public partial class App : Application
     {
         //TODO: Replace with *.azurewebsites.net url after deploying backend to Azure
-        public static string AzureBackendUrl = "bubblesappservice.azurewebsites.net/"; //"http://localhost:5000";
+        public static string AzureBackendUrl = "https://bubblesappservice.azurewebsites.net/"; //"http://localhost:5000";
         public static bool UseMockDataStore = false;
 
         public App()
