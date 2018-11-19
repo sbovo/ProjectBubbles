@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="60a0a2ea-5a13-4056-8995-a10421f555sb" Publisher="CN=7cb57492-2267-41de-b5c4-64b0be92377b" Version="0.1.0.0" />
+  <Identity Name="60a0a2ea-5a13-4056-8995-a10421f555sb" Publisher="CN=sbovo" Version="0.1.1.0" />
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>ProjectBubbles - Internal Preview</DisplayName>
-    <PublisherDisplayName>7cb57492-2267-41de-b5c4-64b0be92377sb</PublisherDisplayName>
+    <PublisherDisplayName>sbovo</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
