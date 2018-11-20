@@ -9,4 +9,3 @@ I start with a Xamarin cross platform app and an ASP.NET Core backend on Azure.
 | Android | [![Build status](https://build.appcenter.ms/v0.1/apps/022c2130-44cb-4aba-b3ee-f8a5eb9fb0f8/branches/master/badge)](https://appcenter.ms)|
 |----------|----------|
 | iOS | [![Build status](https://build.appcenter.ms/v0.1/apps/cc860c22-5117-4e62-9e03-a5b1db30b436/branches/master/badge)](https://appcenter.ms) |
-|----------|----------|
