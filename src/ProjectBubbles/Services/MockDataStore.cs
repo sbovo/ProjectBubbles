@@ -60,5 +60,10 @@ namespace ProjectBubbles.Services
         {
             return await Task.FromResult(items);
         }
+
+        public async Task<IEnumerable<Item>> GetItemsForAMeetingAsync(string meetingName, bool forceRefresh = false)
+        {
+            return await Task.FromResult(items);
+        }
     }
 }

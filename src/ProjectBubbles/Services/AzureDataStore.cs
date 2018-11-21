@@ -21,17 +21,6 @@ namespace ProjectBubbles.Services
             items = new List<Item>();
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
-        {
-            if (forceRefresh)
-            {
-                var json = await client.GetStringAsync($"api/item");
-                items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Item>>(json));
-            }
-
-            return items;
-        }
-
         public async Task<Item> GetItemAsync(string id)
         {
             if (id != null)
@@ -77,6 +66,28 @@ namespace ProjectBubbles.Services
             var response = await client.DeleteAsync($"api/item/{id}");
 
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        {
+            if (forceRefresh)
+            {
+                var json = await client.GetStringAsync($"api/item");
+                items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Item>>(json));
+            }
+
+            return items;
+        }
+
+        public async Task<IEnumerable<Item>> GetItemsForAMeetingAsync(string meetingName, bool forceRefresh = false)
+        {
+            if (forceRefresh)
+            {
+                var json = await client.GetStringAsync($"api/items");
+                items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Item>>(json));
+            }
+
+            return items;
         }
     }
 }

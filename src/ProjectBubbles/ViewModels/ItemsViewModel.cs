@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using ProjectBubbles.Models;
 using ProjectBubbles.Views;
+using System.Collections.Generic;
 
 namespace ProjectBubbles.ViewModels
 {
@@ -17,9 +18,10 @@ namespace ProjectBubbles.ViewModels
 
         public ItemsViewModel()
         {
+            string meetingName = "2018-11-20";
             Title = "Today 📅";
             Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(meetingName));
 
             MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
             {
@@ -30,8 +32,9 @@ namespace ProjectBubbles.ViewModels
             });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadItemsCommand(string meetingName)
         {
+            //string meetingName = null;
             if (IsBusy)
                 return;
 
@@ -40,7 +43,16 @@ namespace ProjectBubbles.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+
+                IEnumerable<Item> items = null;
+                if (meetingName != null)
+                {
+                    items = await DataStore.GetItemsForAMeetingAsync(meetingName, true);
+                }
+                else
+                {
+                    items = await DataStore.GetItemsAsync(true);
+                }
                 foreach (var item in items)
                 {
                     Items.Add(item);
