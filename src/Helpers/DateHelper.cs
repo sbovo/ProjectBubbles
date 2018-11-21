@@ -6,9 +6,9 @@ namespace Helpers
     {
         public static string GetUNIVERSALStringFromDate(DateTime date)
         {
-            string year = DateTime.Now.Year.ToString("d4");
-            string month = DateTime.Now.Month.ToString("d2");
-            string day = DateTime.Now.Day.ToString("d2");
+            string year = date.Year.ToString("d4");
+            string month = date.Month.ToString("d2");
+            string day = date.Day.ToString("d2");
 
             return $"{year}-{month}-{day}";
         }
