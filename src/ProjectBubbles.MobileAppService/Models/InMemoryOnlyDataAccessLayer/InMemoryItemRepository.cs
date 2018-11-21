@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.Threading.Tasks;
 
 namespace ProjectBubbles.Models
 {
@@ -23,12 +24,12 @@ namespace ProjectBubbles.Models
             return items[id];
         }
 
-        public IEnumerable<Item> GetAll()
+        public async Task<IEnumerable<Item>> GetAll()
         {
             return items.Values;
         }
 
-        public void Add(Item item)
+        public async Task Add(Item item)
         {
             item.TeamId = Guid.NewGuid().ToString();
             items[item.TeamId] = item;
@@ -53,6 +54,11 @@ namespace ProjectBubbles.Models
         public void Update(Item item)
         {
             items[item.TeamId] = item;
+        }
+
+        public Task<IEnumerable<Item>> GetAllForADate(string meetingDate)
+        {
+            throw new NotImplementedException();
         }
     }
 }

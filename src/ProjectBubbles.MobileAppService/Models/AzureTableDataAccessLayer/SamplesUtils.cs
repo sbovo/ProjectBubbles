@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 class SamplesUtils
 {
+    public static object Date { get; private set; }
+
     /// <summary>
     /// Demonstrate the most efficient storage query - the point query - where both partition key and row key are specified.
     /// </summary>
@@ -40,13 +42,24 @@ class SamplesUtils
     }
 
 
-    public static async Task<List<TableItem>> GetList(CloudTable table, string partitionKey)
+    public static async Task<List<TableItem>> GetList(CloudTable table, string partitionKey, String meetingNameStarting)
     {
+        DateTime date;
+        if (meetingNameStarting != null)
+        {
+            date = DateTime.Parse(meetingNameStarting);
+            date.Subtract(new TimeSpan(1, 0, 0, 1));
+        }
+        else
+        {
+            date = DateTime.Today.Subtract(new TimeSpan(1, 0, 0, 1));
+        }
+
         //Query
         string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
             QueryComparisons.Equal, partitionKey);
         string RowKeyFilter = TableQuery.GenerateFilterCondition("RowKey",
-            QueryComparisons.GreaterThan, DateHelper.GetUNIVERSALStringFromDate(DateTime.Today.Subtract(new TimeSpan(1, 0, 0, 1))));
+            QueryComparisons.GreaterThan, DateHelper.GetUNIVERSALStringFromDate(date));
         string combinedFilters = TableQuery.CombineFilters(partitionKeyFilter, TableOperators.And, RowKeyFilter);
 
 
