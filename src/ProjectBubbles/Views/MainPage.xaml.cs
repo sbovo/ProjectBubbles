@@ -11,6 +11,7 @@ namespace ProjectBubbles.Views
         public MainPage()
         {
             InitializeComponent();
+            System.Diagnostics.Debug.WriteLine("MainPage ctr");
         }
     }
 }

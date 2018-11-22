@@ -2,19 +2,74 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:ProjectBubbles.Views"
+            xmlns:local="clr-namespace:ProjectBubbles"
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
             x:Class="ProjectBubbles.Views.MainPage">
     <TabbedPage.Children>
-        <NavigationPage Title="Our team">
+        <NavigationPage Title="{x:Static local:AppConstants.Page01}">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <views:ItemsPage>
+                    <x:Arguments>
+                        <x:String>
+                            2018-11-21
+                        </x:String>
+                    </x:Arguments>
+                </views:ItemsPage>
             </x:Arguments>
         </NavigationPage>
-        
+        <NavigationPage Title="{x:Static local:AppConstants.Page02}" x:Name="Page02">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:ItemsPage>
+                    <x:Arguments>
+                        <x:String>
+                            2018-11-22
+                        </x:String>
+                    </x:Arguments>
+                </views:ItemsPage>
+            </x:Arguments>
+        </NavigationPage>
+        <!--<NavigationPage Title="{x:Static local:AppConstants.Page03}">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:ItemsPage>
+                    <x:Arguments>
+                        <x:String>
+                            <x:Static Member="local:AppConstants.Page03" />
+                        </x:String>
+                    </x:Arguments>
+                </views:ItemsPage>
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="{x:Static local:AppConstants.Page04}">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:ItemsPage>
+                    <x:Arguments>
+                        <x:String>
+                            <x:Static Member="local:AppConstants.Page04" />
+                        </x:String>
+                    </x:Arguments>
+                </views:ItemsPage>
+            </x:Arguments>
+        </NavigationPage>-->
         <!--<NavigationPage Title="About">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">

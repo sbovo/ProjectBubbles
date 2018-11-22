@@ -21,8 +21,17 @@ namespace ProjectBubbles.Views
         public ItemsPage()
         {
             InitializeComponent();
-
+            
             BindingContext = viewModel = new ItemsViewModel();
+
+        }
+
+        public ItemsPage(string id)
+        {
+            InitializeComponent();
+
+            BindingContext = viewModel = new ItemsViewModel(id);
+            
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

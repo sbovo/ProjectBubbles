@@ -21,7 +21,7 @@ namespace ProjectBubbles.Views
             Item = new Item
             {
                 TeamId = "InternalPreview-0.0.1.0",
-                MeetingDatePlus = DateHelper.GetUNIVERSALStringFromDate(DateTime.Today),
+                MeetingDatePlus = DateHelper.GetUNIVERSALString(DateTime.Today),
                 UserName = "",
                 Location = "",
                 Activity = "work"

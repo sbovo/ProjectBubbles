@@ -16,10 +16,24 @@ namespace ProjectBubbles.ViewModels
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
+        public string Date { get; set; }
+
         public ItemsViewModel()
         {
-            string meetingName = Helpers.DateHelper.GetUNIVERSALStringFromDate(DateTime.Today);
-            Title = "Today 📅";
+            string meetingName = Helpers.DateHelper.GetUNIVERSALString(DateTime.Today);
+            LoadItems(meetingName);
+        }
+
+
+        public ItemsViewModel(string date)
+        {
+            string meetingName = date;
+            LoadItems(meetingName);
+        }
+
+        private void LoadItems(string meetingName)
+        {
+            Title = meetingName;
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(meetingName));
 
