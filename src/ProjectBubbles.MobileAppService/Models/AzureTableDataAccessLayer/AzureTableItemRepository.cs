@@ -24,21 +24,21 @@ namespace ProjectBubbles.Models
             table = Common.CreateTableAsync("TeamsEventsAndParticipations").GetAwaiter().GetResult();
 
             string Team = Guid.NewGuid().ToString();
-            // All users are in the same team
-            TableItem item1 = new TableItem {
-                TeamId = Team, MeetingDatePlus = "2019-12-01-chmaneu", UserName = "chmaneu",
-                Location = "EOS", Activity = "Azure Evergreen" };
-            TableItem item2 = new TableItem {
-                TeamId = Team, MeetingDatePlus = "2019-12-01-sypontor", UserName = "sypontor",
-                Location = "Home", Activity = "Git forever" };
-            TableItem item3 = new TableItem {
-                TeamId = Team, MeetingDatePlus = "2019-12-01-sbovo", UserName = "sbovo",
-                Location = "EOS", Activity = "HoloLens dev" };
+            //// All users are in the same team
+            //TableItem item1 = new TableItem {
+            //    TeamId = Team, MeetingDatePlus = "2019-12-01-chmaneu", UserName = "chmaneu",
+            //    Location = "EOS", Activity = "Azure Evergreen" };
+            //TableItem item2 = new TableItem {
+            //    TeamId = Team, MeetingDatePlus = "2019-12-01-sypontor", UserName = "sypontor",
+            //    Location = "Home", Activity = "Git forever" };
+            //TableItem item3 = new TableItem {
+            //    TeamId = Team, MeetingDatePlus = "2019-12-01-sbovo", UserName = "sbovo",
+            //    Location = "EOS", Activity = "HoloLens dev" };
 
 
-            item1 = SamplesUtils.InsertOrMergeEntityAsync(table, item1).GetAwaiter().GetResult();
-            item2 = SamplesUtils.InsertOrMergeEntityAsync(table, item2).GetAwaiter().GetResult();
-            item3 = SamplesUtils.InsertOrMergeEntityAsync(table, item3).GetAwaiter().GetResult();
+            //item1 = SamplesUtils.InsertOrMergeEntityAsync(table, item1).GetAwaiter().GetResult();
+            //item2 = SamplesUtils.InsertOrMergeEntityAsync(table, item2).GetAwaiter().GetResult();
+            //item3 = SamplesUtils.InsertOrMergeEntityAsync(table, item3).GetAwaiter().GetResult();
         }
 
         public Item Get(string id)

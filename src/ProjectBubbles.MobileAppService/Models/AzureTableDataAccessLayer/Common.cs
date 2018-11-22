@@ -44,7 +44,7 @@ public class Common
         // Retrieve storage account information from connection string.
         // TODO: sbovo - Use appsetting.json and Azure Key Vaul for production
         // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1
-        string connectionString = "DefaultEndpointsProtocol=https;AccountName=bubblestorageaccount;AccountKey=bOV46lWfaGyuTvBwr1iD3DnMM9c9eboJkfd85ZuWI49jclbmiIqyZJyvTprLGjpl85MO+XFwxn3MrXrdEDUUDg==;";
+        string connectionString = "<<To replace>>";
         CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(connectionString);
 
         // Create a table client for interacting with the table service

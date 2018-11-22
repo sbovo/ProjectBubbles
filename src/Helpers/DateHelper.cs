@@ -4,7 +4,7 @@ namespace Helpers
 {
     public static class DateHelper
     {
-        public static string GetUNIVERSALStringFromDate(DateTime date)
+        public static string GetUNIVERSALString(DateTime date)
         {
             string year = date.Year.ToString("d4");
             string month = date.Month.ToString("d2");

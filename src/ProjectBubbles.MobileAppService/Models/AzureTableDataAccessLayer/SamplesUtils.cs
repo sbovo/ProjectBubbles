@@ -48,20 +48,22 @@ class SamplesUtils
         if (meetingNameStarting != null)
         {
             date = DateTime.Parse(meetingNameStarting);
-            date.Subtract(new TimeSpan(1, 0, 0, 1));
+            //date.Subtract(new TimeSpan(1, 0, 0, 1));
         }
         else
         {
-            date = DateTime.Today.Subtract(new TimeSpan(1, 0, 0, 1));
+            date = DateTime.Today;
         }
 
         //Query
         string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
             QueryComparisons.Equal, partitionKey);
-        string RowKeyFilter = TableQuery.GenerateFilterCondition("RowKey",
-            QueryComparisons.GreaterThan, DateHelper.GetUNIVERSALStringFromDate(date));
-        string combinedFilters = TableQuery.CombineFilters(partitionKeyFilter, TableOperators.And, RowKeyFilter);
-
+        string RowKeyFilterLow = TableQuery.GenerateFilterCondition("RowKey",
+            QueryComparisons.GreaterThanOrEqual, DateHelper.GetUNIVERSALString(date));
+        string RowKeyFilterHigh = TableQuery.GenerateFilterCondition("RowKey",
+       QueryComparisons.LessThan, DateHelper.GetUNIVERSALString(date.AddDays(1)));
+        string combinedFilters = TableQuery.CombineFilters(partitionKeyFilter, TableOperators.And, RowKeyFilterLow);
+        combinedFilters = TableQuery.CombineFilters(combinedFilters, TableOperators.And, RowKeyFilterHigh);
 
         TableQuery<TableItem> query = new TableQuery<TableItem>().Where(combinedFilters);
 
