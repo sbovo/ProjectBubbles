@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Models;
 using Newtonsoft.Json;
 using ProjectBubbles.Models;
 
@@ -73,7 +74,8 @@ namespace ProjectBubbles.Services
             if (forceRefresh)
             {
                 var json = await client.GetStringAsync($"api/item");
-                items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Item>>(json));
+                Result r = await Task.Run(() => JsonConvert.DeserializeObject<Result>(json));
+                items = r.result;
             }
 
             return items;
@@ -83,8 +85,9 @@ namespace ProjectBubbles.Services
         {
             if (forceRefresh)
             {
-                var json = await client.GetStringAsync($"api/items");
-                items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Item>>(json));
+                var json = await client.GetStringAsync($"api/items/{meetingName}");
+                Result r = await Task.Run(() => JsonConvert.DeserializeObject<Result>(json));
+                items = r.result;
             }
 
             return items;

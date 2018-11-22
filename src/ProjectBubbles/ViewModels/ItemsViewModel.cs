@@ -18,7 +18,7 @@ namespace ProjectBubbles.ViewModels
 
         public ItemsViewModel()
         {
-            string meetingName = "2018-11-20";
+            string meetingName = Helpers.DateHelper.GetUNIVERSALStringFromDate(DateTime.Today);
             Title = "Today 📅";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(meetingName));
@@ -34,7 +34,6 @@ namespace ProjectBubbles.ViewModels
 
         async Task ExecuteLoadItemsCommand(string meetingName)
         {
-            //string meetingName = null;
             if (IsBusy)
                 return;
 
