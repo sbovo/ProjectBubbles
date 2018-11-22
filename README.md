@@ -2,7 +2,12 @@
 
 Project Bubbles is a personal initiative to build some kind of App which will easely lets a group of people know each other's if they are participating to an event/meeting. 
 
-I start with a Xamarin cross platform app and an ASP.NET Core backend on Azure.
+The start is a Xamarin cross platform app and an ASP.NET Core backend on Azure.
+
+# First features
+
+- Multipages applications that allows users to enter their activity/feeling for each day
+
 
 # Automated Builds
 
