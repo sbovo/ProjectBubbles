@@ -14,14 +14,14 @@ namespace ProjectBubbles.Views
     {
         public Item Item { get; set; }
 
-        public NewItemPage()
+        public NewItemPage(string MeetingDate)
         {
             InitializeComponent();
 
             Item = new Item
             {
                 TeamId = "InternalPreview-0.0.1.0",
-                MeetingDatePlus = DateHelper.GetUNIVERSALString(DateTime.Today),
+                MeetingDatePlus = MeetingDate,
                 UserName = "",
                 Location = "",
                 Activity = "work"

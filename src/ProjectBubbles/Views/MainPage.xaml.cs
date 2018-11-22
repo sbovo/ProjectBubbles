@@ -18,7 +18,7 @@ namespace ProjectBubbles.Views
         private void CreatePages()
         {
             DateTime Date = DateTime.Now;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 11; i++)
             {
                 string UniversalStringDate = DateHelper.GetUNIVERSALString(Date);
                 ItemsPage PageDay = new ItemsPage(UniversalStringDate);

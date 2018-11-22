@@ -48,7 +48,7 @@ namespace ProjectBubbles.Views
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage(viewModel.Date)));
         }
 
         protected override void OnAppearing()

@@ -20,22 +20,22 @@ namespace ProjectBubbles.ViewModels
 
         public ItemsViewModel()
         {
-            string meetingName = Helpers.DateHelper.GetUNIVERSALString(DateTime.Today);
-            LoadItems(meetingName);
+            Date = Helpers.DateHelper.GetUNIVERSALString(DateTime.Today);
+            LoadItems();
         }
 
 
         public ItemsViewModel(string date)
         {
-            string meetingName = date;
-            LoadItems(meetingName);
+            Date = date;
+            LoadItems();
         }
 
-        private void LoadItems(string meetingName)
+        private void LoadItems()
         {
-            Title = meetingName;
+            Title = Date;
             Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(meetingName));
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(Date));
 
             MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
             {
