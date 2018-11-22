@@ -23,9 +23,9 @@ namespace ProjectBubbles.Controllers
         }
 
         [HttpGet("{meetingName}")]
-        public IActionResult ListMeetings(string meetingDate)
+        public IActionResult ListMeetings(string meetingName)
         {
-            return Ok(ItemRepository.GetAllForADate(meetingDate));
+            return Ok(ItemRepository.GetAllForADate(meetingName));
         }
     }
 }
