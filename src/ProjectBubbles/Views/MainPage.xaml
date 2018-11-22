@@ -4,8 +4,9 @@
             xmlns:views="clr-namespace:ProjectBubbles.Views"
             xmlns:local="clr-namespace:ProjectBubbles"
             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-            x:Class="ProjectBubbles.Views.MainPage">
-    <TabbedPage.Children>
+            x:Class="ProjectBubbles.Views.MainPage"
+            x:Name="Main">
+    <!--<TabbedPage.Children>
         <NavigationPage Title="{x:Static local:AppConstants.Page01}">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -31,14 +32,13 @@
             <x:Arguments>
                 <views:ItemsPage>
                     <x:Arguments>
-                        <x:String>
-                            2018-11-22
-                        </x:String>
+                        <x:String></x:String>
+                        <x:Static Member="local:AppConstants.Page03" x:TypeArguments="x:String" />
                     </x:Arguments>
                 </views:ItemsPage>
             </x:Arguments>
         </NavigationPage>
-        <!--<NavigationPage Title="{x:Static local:AppConstants.Page03}">
+        <NavigationPage Title="{x:Static local:AppConstants.Page03}">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
@@ -69,8 +69,8 @@
                     </x:Arguments>
                 </views:ItemsPage>
             </x:Arguments>
-        </NavigationPage>-->
-        <!--<NavigationPage Title="About">
+        </NavigationPage>
+        <NavigationPage Title="About">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_about.png"/>
@@ -79,6 +79,6 @@
             <x:Arguments>
                 <views:AboutPage />
             </x:Arguments>
-        </NavigationPage>-->
-    </TabbedPage.Children>
+        </NavigationPage>
+    </TabbedPage.Children>-->
 </TabbedPage>
