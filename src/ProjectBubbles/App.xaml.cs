@@ -3,6 +3,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ProjectBubbles.Services;
 using ProjectBubbles.Views;
+// AppCenter Telemetry and diagnostics
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ProjectBubbles
@@ -29,6 +33,10 @@ namespace ProjectBubbles
         protected override void OnStart()
         {
             // Handle when your app starts
+            AppCenter.Start("android=bbaa52cb-718e-4c6f-91b2-ceee96cce5be;" 
+                + "uwp={Your UWP App secret here};" 
+                + "ios={Your iOS App secret here}",
+                typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()
