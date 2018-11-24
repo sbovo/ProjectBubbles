@@ -6,7 +6,13 @@ The start is a Xamarin cross platform app and an ASP.NET Core backend on Azure.
 
 # First features
 
-- Multipages applications that allows users to enter their activity/feeling for each day
+- Multipages applications that allows users to enter their activity/feeling for the upcoming 10 days
+- UWP and Android app availables
+
+# Log
+2018-11-23  Feature Multi-tabs/pages for the 10 upcoming days
+2018-11-23  Feature AppCenter Analytics and Crashes for the UWP and Android app
+
 
 
 # Automated Builds
