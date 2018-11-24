@@ -10,8 +10,10 @@ The start is a Xamarin cross platform app and an ASP.NET Core backend on Azure.
 - UWP and Android app availables
 
 # Log
-2018-11-23  Feature Multi-tabs/pages for the 10 upcoming days
-2018-11-23  Feature AppCenter Analytics and Crashes for the UWP and Android app
+| Date | Action type | Comments |
+|------|-------------|----------|
+2018-11-23|Feature|Multi-tabs/pages for the 10 upcoming days
+2018-11-23|Feature|AppCenter Analytics and Crashes for the UWP and Android app
 
 
 
