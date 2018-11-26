@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 using ProjectBubbles.Models;
 using ProjectBubbles.ViewModels;
+using Microsoft.AppCenter.Analytics;
 
 namespace ProjectBubbles.Views
 {

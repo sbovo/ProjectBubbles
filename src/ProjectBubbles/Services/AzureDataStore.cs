@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Analytics;
 using Models;
 using Newtonsoft.Json;
+using ProjectBubbles.Helpers;
 using ProjectBubbles.Models;
 
 namespace ProjectBubbles.Services
@@ -42,6 +44,9 @@ namespace ProjectBubbles.Services
 
             var response = await client.PostAsync($"api/item", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
 
+
+            LogHelper.Log("AzureDataStore-AddItemAsync", 
+                new Dictionary<string, string> {{"Result",  response.StatusCode.ToString() }});
             return response.IsSuccessStatusCode;
         }
 
@@ -85,6 +90,7 @@ namespace ProjectBubbles.Services
         {
             if (forceRefresh)
             {
+                LogHelper.Log("GetItemsForAMeetingAsync");
                 var json = await client.GetStringAsync($"api/items/{meetingName}");
                 Result r = await Task.Run(() => JsonConvert.DeserializeObject<Result>(json));
                 items = r.result;

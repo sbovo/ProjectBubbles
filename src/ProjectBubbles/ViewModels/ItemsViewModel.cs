@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using ProjectBubbles.Models;
 using ProjectBubbles.Views;
 using System.Collections.Generic;
+using Helpers;
+using ProjectBubbles.Helpers;
 
 namespace ProjectBubbles.ViewModels
 {
@@ -20,7 +22,7 @@ namespace ProjectBubbles.ViewModels
 
         public ItemsViewModel()
         {
-            Date = Helpers.DateHelper.GetUNIVERSALString(DateTime.Today);
+            Date = DateHelper.GetUNIVERSALString(DateTime.Today);
             LoadItems();
         }
 
@@ -33,6 +35,7 @@ namespace ProjectBubbles.ViewModels
 
         private void LoadItems()
         {
+            LogHelper.Log("ItemsPage");
             Title = Date;
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(Date));
@@ -43,6 +46,7 @@ namespace ProjectBubbles.ViewModels
                 // TODO: sbovo - The item is added to the ObservableCollection even if it is updated (and not added)
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
+                LogHelper.Log("AddItem to DataStore");
             });
         }
 

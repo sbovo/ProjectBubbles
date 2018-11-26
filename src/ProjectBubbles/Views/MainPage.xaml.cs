@@ -1,4 +1,6 @@
 ﻿using Helpers;
+using Microsoft.AppCenter.Analytics;
+using ProjectBubbles.Helpers;
 using System;
 
 using Xamarin.Forms;
@@ -17,6 +19,7 @@ namespace ProjectBubbles.Views
 
         private void CreatePages()
         {
+            LogHelper.Log("MainPage");
             DateTime Date = DateTime.Now;
             for (int i = 0; i < 11; i++)
             {

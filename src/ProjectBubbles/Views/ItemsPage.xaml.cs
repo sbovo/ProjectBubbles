@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using ProjectBubbles.Models;
 using ProjectBubbles.Views;
 using ProjectBubbles.ViewModels;
+using Microsoft.AppCenter.Analytics;
 
 namespace ProjectBubbles.Views
 {
@@ -21,17 +22,13 @@ namespace ProjectBubbles.Views
         public ItemsPage()
         {
             InitializeComponent();
-            
             BindingContext = viewModel = new ItemsViewModel();
-
         }
 
         public ItemsPage(string id)
         {
             InitializeComponent();
-
             BindingContext = viewModel = new ItemsViewModel(id);
-            
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
