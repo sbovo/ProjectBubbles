@@ -8,7 +8,6 @@ using Xamarin.Forms;
 using ProjectBubbles.Models;
 using ProjectBubbles.Views;
 using System.Collections.Generic;
-using Helpers;
 using ProjectBubbles.Helpers;
 
 namespace ProjectBubbles.ViewModels
@@ -22,7 +21,7 @@ namespace ProjectBubbles.ViewModels
 
         public ItemsViewModel()
         {
-            Date = DateHelper.GetUNIVERSALString(DateTime.Today);
+            Date = DateTime.Today.GetUNIVERSALString();
             LoadItems();
         }
 

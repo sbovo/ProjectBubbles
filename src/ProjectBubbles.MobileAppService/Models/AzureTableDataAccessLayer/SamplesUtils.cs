@@ -1,5 +1,4 @@
-﻿using Helpers;
-using Microsoft.Azure;
+﻿using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using ProjectBubbles.AzureTableDataAccessLayer;
@@ -59,9 +58,9 @@ class SamplesUtils
         string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
             QueryComparisons.Equal, partitionKey);
         string RowKeyFilterLow = TableQuery.GenerateFilterCondition("RowKey",
-            QueryComparisons.GreaterThanOrEqual, DateHelper.GetUNIVERSALString(date));
+            QueryComparisons.GreaterThanOrEqual, date.GetUNIVERSALString());
         string RowKeyFilterHigh = TableQuery.GenerateFilterCondition("RowKey",
-       QueryComparisons.LessThan, DateHelper.GetUNIVERSALString(date.AddDays(1)));
+       QueryComparisons.LessThan, date.AddDays(1).GetUNIVERSALString());
         string combinedFilters = TableQuery.CombineFilters(partitionKeyFilter, TableOperators.And, RowKeyFilterLow);
         combinedFilters = TableQuery.CombineFilters(combinedFilters, TableOperators.And, RowKeyFilterHigh);
 

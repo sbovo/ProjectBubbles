@@ -26,11 +26,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Secrets.txt = Secrets.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpers", "Helpers\Helpers.csproj", "{2A890955-7D73-4A5A-B9A8-6E5D4D741457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions", "Helpers\Extensions.csproj", "{2A890955-7D73-4A5A-B9A8-6E5D4D741457}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{06C1217E-D414-4368-B471-9672EF9062CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBubbles.WebApp", "ProjectBubbles.WebApp\ProjectBubbles.WebApp.csproj", "{10E7655A-7CCD-497F-AF1B-1FA3119089D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectBubbles.WebApp", "ProjectBubbles.WebApp\ProjectBubbles.WebApp.csproj", "{10E7655A-7CCD-497F-AF1B-1FA3119089D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

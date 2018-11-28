@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
-using Helpers;
 
 namespace ProjectBubbles
 {
@@ -10,10 +9,10 @@ namespace ProjectBubbles
     {
         public static readonly List<string> PagesNames = null;
 
-        public static string Page01 = DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(-2));
-        public static string Page02 = DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(-1));
-        public static string Page03 = DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(2));
-        public static string Page04 = DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(3));
+        public static string Page01 = DateTime.Now.AddDays(-2).GetUNIVERSALString();
+        public static string Page02 = DateTime.Now.AddDays(-1).GetUNIVERSALString();
+        public static string Page03 = DateTime.Now.AddDays(2).GetUNIVERSALString();
+        public static string Page04 = DateTime.Now.AddDays(3).GetUNIVERSALString();
 
         static AppConstants()
         {
@@ -24,14 +23,14 @@ namespace ProjectBubbles
                 case Device.UWP:
                     PagesNames = new List<string>
                         {
-                        DateHelper.GetUNIVERSALString(DateTime.Now),
-                        DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(1)),
-                        DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(2)),
-                        DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(3)),
-                        DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(4)),
-                        DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(5)),
-                        DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(6)),
-                        DateHelper.GetUNIVERSALString(DateTime.Now.AddDays(7)),
+                        DateTime.Now.GetUNIVERSALString(),
+                        DateTime.Now.AddDays(1).GetUNIVERSALString(),
+                        DateTime.Now.AddDays(2).GetUNIVERSALString(),
+                        DateTime.Now.AddDays(3).GetUNIVERSALString(),
+                        DateTime.Now.AddDays(4).GetUNIVERSALString(),
+                        DateTime.Now.AddDays(5).GetUNIVERSALString(),
+                        DateTime.Now.AddDays(6).GetUNIVERSALString(),
+                        DateTime.Now.AddDays(7).GetUNIVERSALString(),
                         };
                     break;
             }

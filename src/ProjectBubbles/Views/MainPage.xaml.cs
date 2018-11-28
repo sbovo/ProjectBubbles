@@ -1,6 +1,4 @@
-﻿using Helpers;
-using Microsoft.AppCenter.Analytics;
-using ProjectBubbles.Helpers;
+﻿using ProjectBubbles.Helpers;
 using System;
 
 using Xamarin.Forms;
@@ -23,7 +21,7 @@ namespace ProjectBubbles.Views
             DateTime Date = DateTime.Now;
             for (int i = 0; i < 11; i++)
             {
-                string UniversalStringDate = DateHelper.GetUNIVERSALString(Date);
+                string UniversalStringDate = Date.GetUNIVERSALString();
                 ItemsPage PageDay = new ItemsPage(UniversalStringDate);
                 NavigationPage P = new NavigationPage(PageDay);
                 P.Title = UniversalStringDate;
