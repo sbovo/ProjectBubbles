@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AppCenter.Analytics;
 using Models;
 using Newtonsoft.Json;
-using ProjectBubbles.Helpers;
 using ProjectBubbles.Models;
+using Xamarin.Forms;
 
 namespace ProjectBubbles.Services
 {
@@ -15,6 +15,7 @@ namespace ProjectBubbles.Services
     {
         HttpClient client;
         IEnumerable<Item> items;
+        ILogger Logger { get; }
 
         public AzureDataStore()
         {
@@ -22,6 +23,8 @@ namespace ProjectBubbles.Services
             client.BaseAddress = new Uri($"{App.AzureBackendUrl}/");
 
             items = new List<Item>();
+
+            Logger = DependencyService.Resolve<ILogger>();
         }
 
         public async Task<Item> GetItemAsync(string id)
@@ -45,7 +48,7 @@ namespace ProjectBubbles.Services
             var response = await client.PostAsync($"api/item", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
 
 
-            LogHelper.Log("AzureDataStore-AddItemAsync", 
+            Logger?.Log("AzureDataStore-AddItemAsync", 
                 new Dictionary<string, string> {{"Result",  response.StatusCode.ToString() }});
             return response.IsSuccessStatusCode;
         }
@@ -90,7 +93,7 @@ namespace ProjectBubbles.Services
         {
             if (forceRefresh)
             {
-                LogHelper.Log("GetItemsForAMeetingAsync");
+                Logger?.Log("GetItemsForAMeetingAsync");
                 var json = await client.GetStringAsync($"api/items/{meetingName}");
                 Result r = await Task.Run(() => JsonConvert.DeserializeObject<Result>(json));
                 items = r.result;
