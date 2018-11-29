@@ -27,12 +27,15 @@ namespace ProjectBubbles
             else
                 DependencyService.Register<AzureDataStore>();
 
+            DependencyService.Register<ILogger, AppCenterLogger>();
+
             MainPage = new MainPage();
         }
 
         protected override void OnStart()
         {
             // Handle when your app starts
+            //TODO: Need to be in a configuration file
             AppCenter.Start("android=bbaa52cb-718e-4c6f-91b2-ceee96cce5be;" 
                 + "uwp=bc566608-1fd9-4dc5-91fe-8b532cd1cd16;"
                 + "ios=59ec4157-e51c-4c2a-bc94-f093558c6605",

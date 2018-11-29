@@ -1,4 +1,4 @@
-﻿using ProjectBubbles.Helpers;
+﻿using ProjectBubbles.Services;
 using System;
 
 using Xamarin.Forms;
@@ -9,16 +9,21 @@ namespace ProjectBubbles.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
     {
+        ILogger Logger { get; }
+
         public MainPage()
         {
             InitializeComponent();
+
+            Logger = DependencyService.Resolve<ILogger>();
             CreatePages();
         }
 
         private void CreatePages()
         {
-            LogHelper.Log("MainPage");
+            Logger?.Log("MainPage");
             DateTime Date = DateTime.Now;
+            //TODO: we need a better way to do that
             for (int i = 0; i < 11; i++)
             {
                 string UniversalStringDate = Date.GetUNIVERSALString();
