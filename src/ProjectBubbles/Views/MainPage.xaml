@@ -6,8 +6,8 @@
             xmlns:sys="clr-namespace:System;assembly=mscorlib"
             x:Class="ProjectBubbles.Views.MainPage"
             x:Name="Main">
-    <!--<TabbedPage.Children>
-        <NavigationPage Title="{x:Static local:AppConstants.Page01}">
+    <TabbedPage.Children>
+        <!--    <NavigationPage Title="{x:Static local:AppConstants.Page01}">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
@@ -69,16 +69,11 @@
                     </x:Arguments>
                 </views:ItemsPage>
             </x:Arguments>
-        </NavigationPage>
-        <NavigationPage Title="About">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
+        </NavigationPage>-->
+        <NavigationPage Title="Settings">
             <x:Arguments>
-                <views:AboutPage />
+                <views:SettingsPage />
             </x:Arguments>
         </NavigationPage>
-    </TabbedPage.Children>-->
+    </TabbedPage.Children>
 </TabbedPage>
