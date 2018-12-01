@@ -15,7 +15,7 @@ namespace ProjectBubbles.Services
     {
         HttpClient client;
         IEnumerable<Item> items;
-        ILogger Logger { get; }
+
 
         public AzureDataStore()
         {
@@ -23,8 +23,6 @@ namespace ProjectBubbles.Services
             client.BaseAddress = new Uri($"{App.AzureBackendUrl}/");
 
             items = new List<Item>();
-
-            Logger = DependencyService.Resolve<ILogger>();
         }
 
         public async Task<Item> GetItemAsync(string id)
@@ -48,7 +46,7 @@ namespace ProjectBubbles.Services
             var response = await client.PostAsync($"api/item", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
 
 
-            Logger?.Log("AzureDataStore-AddItemAsync", 
+            App.Logger?.Log("AzureDataStore-AddItemAsync", 
                 new Dictionary<string, string> {{"Result",  response.StatusCode.ToString() }});
             return response.IsSuccessStatusCode;
         }
@@ -93,7 +91,7 @@ namespace ProjectBubbles.Services
         {
             if (forceRefresh)
             {
-                Logger?.Log("GetItemsForAMeetingAsync");
+                App.Logger?.Log("GetItemsForAMeetingAsync");
                 var json = await client.GetStringAsync($"api/items/{meetingName}");
                 Result r = await Task.Run(() => JsonConvert.DeserializeObject<Result>(json));
                 items = r.result;

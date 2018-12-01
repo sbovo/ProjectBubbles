@@ -8,12 +8,9 @@ namespace ProjectBubbles.ViewModels
     public class ItemDetailViewModel : BaseViewModel
     {
         public Item Item { get; set; }
-        private ILogger Logger { get;  }
         public ItemDetailViewModel(Item item = null)
         {
-            Logger = DependencyService.Resolve<ILogger>();
-
-            Logger?.Log("ItemDetailPage");
+            App.Logger?.Log("ItemDetailPage");
             Title = item?.UserName;
             Item = item;
         }

@@ -40,7 +40,6 @@ namespace ProjectBubbles.Views
             // Get the username from the local folder
             try
             {
-
                 string dbPath = Path.Combine(
                                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                                     "settings.db3");
@@ -55,15 +54,8 @@ namespace ProjectBubbles.Views
                 }
                 else
                 {
-                    Item.UserName = "Anonymous";
+                    Item.UserName = "User" + Guid.NewGuid().ToString();
                 }
-                //using (var stream = await FileSystem.OpenAppPackageFileAsync("settings.txt"))
-                //{
-                //    using (var reader = new StreamReader(stream))
-                //    {
-                //        Item.UserName = await reader.ReadToEndAsync();
-                //    }
-                //}
             }
             catch (System.Exception)
             {

@@ -9,17 +9,22 @@ using SQLite;
 using Models;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using ProjectBubbles.Services;
 
 namespace ProjectBubbles.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
+       
+
         public SettingsViewModel()
         {
             Title = "Settings";
            
             InitCommand = new Command(async () => await ExecuteInitCommand());
             SaveSettingsCommand = new Command(async () => await SaveSettings());
+
+           
         }
 
         private async Task ExecuteInitCommand()
@@ -32,6 +37,7 @@ namespace ProjectBubbles.ViewModels
             LocalDatabase = new SQLiteAsyncConnection(dbPath);
             LocalDatabase.CreateTableAsync<Settings>().Wait();
 
+            App.Logger?.Log("Settings-LoadingFromSQLite");
             Settings userSettings = await LocalDatabase.Table<Settings>().Where(i => i.ID == 0).FirstOrDefaultAsync();
             if (userSettings != null)
             {
@@ -47,13 +53,17 @@ namespace ProjectBubbles.ViewModels
         {
             try
             {
+                App.Logger?.Log("Settings-LoadingFromSQLite");
                 Settings userSettings = await LocalDatabase.Table<Settings>().Where(i => i.ID == 0).FirstOrDefaultAsync();
                 if (userSettings == null)
                 {
+                    App.Logger?.Log("Settings-InsertSQLite");
                     await LocalDatabase.InsertAsync(LocalSettings);
                 }
                 else
                 {
+                    App.Logger?.Log("Settings-UpdateSQLite");
+
                     await LocalDatabase.UpdateAsync(LocalSettings);
                 }
             }

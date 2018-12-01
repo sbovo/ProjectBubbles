@@ -31,7 +31,7 @@
                 <StackLayout Spacing="20" Padding="15">
                     <Label Text="UserName" FontSize="Medium" />
                     <Entry Text="{Binding LocalSettings.UserName, Mode=TwoWay}" FontSize="Small" />
-                    <!--<Button Margin="0,10,0,0" Text="Save" Command="{Binding SaveSettingsCommand}" BackgroundColor="{StaticResource Primary}" TextColor="White" />-->
+                    <Button Margin="0,10,0,0" Text="Save" Command="{Binding SaveSettingsCommand}" BackgroundColor="{StaticResource Primary}" TextColor="White" />
                 </StackLayout>
             </StackLayout>
         </Grid>

@@ -14,22 +14,24 @@ The start is a Xamarin cross platform app and an ASP.NET Core backend on Azure.
 # Application Log
 | Date | Action type | Comments |
 |------|-------------|----------|
+2018-12-01|Feature|Settings page using SQLite (Username saved locally)
 2018-11-23|Feature|Multi-tabs/pages for the 10 upcoming days
 2018-11-23|Feature|AppCenter Analytics and Crashes for the UWP and Android app
 2018-11-19|Feature|One page for one team one day
 
+
 # Project Log
 | Date | Action type | Comments |
 |------|-------------|----------|
-2018-11-14|Feature|Project startup: One team
-2018-11-17|Feature|Using Azure Table storage
-2018-11-19|Feature|First preview version (UWP and Android) working for one team one day
-2018-11-20|DevOps|AppCenter for automated build
-2018-11-21|Feature|App working for one team several days
 2018-11-23|DevOps|AppCenter Analytics and Crahses
+2018-11-21|Feature|App working for one team several days
+2018-11-20|DevOps|AppCenter for automated build
+2018-11-19|Feature|First preview version (UWP and Android) working for one team one day
+2018-11-17|Feature|Using Azure Table storage
+2018-11-14|Feature|Project startup: One team
+
 
 # Automated Builds
-
 | Platform | AppCenter builds |
 |----------|----------|
 | Android | [![Build status](https://build.appcenter.ms/v0.1/apps/022c2130-44cb-4aba-b3ee-f8a5eb9fb0f8/branches/master/badge)](https://appcenter.ms)|

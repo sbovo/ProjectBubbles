@@ -17,6 +17,7 @@ namespace ProjectBubbles
         //public static string AzureBackendUrl = "http://localhost:5000/";
         public static string AzureBackendUrl = "https://bubblesappservice.azurewebsites.net/";
         public static bool UseMockDataStore = false;
+        public static ILogger Logger;
 
         public App()
         {
@@ -28,6 +29,7 @@ namespace ProjectBubbles
                 DependencyService.Register<AzureDataStore>();
 
             DependencyService.Register<ILogger, AppCenterLogger>();
+            Logger = DependencyService.Resolve<ILogger>();
 
             MainPage = new MainPage();
         }

@@ -14,12 +14,14 @@ namespace ProjectBubbles.Views
             InitializeComponent();
             viewModel = new SettingsViewModel();
             BindingContext = viewModel;
+
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             viewModel.InitCommand.Execute(null);
+            App.Logger?.Log("Settings-OnAppearing");
         }
 
 
@@ -27,6 +29,7 @@ namespace ProjectBubbles.Views
         {
             base.OnDisappearing();
             viewModel.SaveSettingsCommand.Execute(null);
+            App.Logger?.Log("Settings-OnDisappearing");
         }
     }
 }
