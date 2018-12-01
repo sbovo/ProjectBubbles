@@ -15,5 +15,18 @@ namespace ProjectBubbles.Views
             viewModel = new SettingsViewModel();
             BindingContext = viewModel;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.InitCommand.Execute(null);
+        }
+
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.SaveSettingsCommand.Execute(null);
+        }
     }
 }

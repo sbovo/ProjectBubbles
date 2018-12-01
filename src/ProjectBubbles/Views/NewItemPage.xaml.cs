@@ -6,6 +6,10 @@ using Xamarin.Forms.Xaml;
 
 using ProjectBubbles.Models;
 using Microsoft.AppCenter.Analytics;
+using Xamarin.Essentials;
+using System.IO;
+using SQLite;
+using Models;
 
 namespace ProjectBubbles.Views
 {
@@ -32,6 +36,41 @@ namespace ProjectBubbles.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
+
+            // Get the username from the local folder
+            try
+            {
+
+                string dbPath = Path.Combine(
+                                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                                    "settings.db3");
+
+                SQLiteAsyncConnection database = new SQLiteAsyncConnection(dbPath);
+                database.CreateTableAsync<Settings>().Wait();
+
+                Settings userSettings = await database.Table<Settings>().Where(i => i.ID == 0).FirstOrDefaultAsync();
+                if (userSettings != null)
+                {
+                    Item.UserName = userSettings.UserName;
+                }
+                else
+                {
+                    Item.UserName = "Anonymous";
+                }
+                //using (var stream = await FileSystem.OpenAppPackageFileAsync("settings.txt"))
+                //{
+                //    using (var reader = new StreamReader(stream))
+                //    {
+                //        Item.UserName = await reader.ReadToEndAsync();
+                //    }
+                //}
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+
+
             Item.MeetingDatePlus += $"-{Item.UserName}";
             MessagingCenter.Send(this, "AddItem", Item);
             await Navigation.PopModalAsync();

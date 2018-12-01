@@ -14,8 +14,8 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="UserName" FontSize="Medium" />
-            <Entry Text="{Binding Item.UserName}" FontSize="Small" />
+            <!--<Label Text="UserName" FontSize="Medium" />
+            <Entry Text="{Binding Item.UserName}" FontSize="Small" />-->
             <Label Text="Location" FontSize="Medium" />
             <Entry Text="{Binding Item.Location}" FontSize="Small" />
         </StackLayout>
