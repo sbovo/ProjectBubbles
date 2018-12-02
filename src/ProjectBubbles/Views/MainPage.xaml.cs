@@ -1,6 +1,4 @@
-﻿using ProjectBubbles.Services;
-using System;
-
+﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,13 +7,9 @@ namespace ProjectBubbles.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
     {
-        ILogger Logger { get; }
-
         public MainPage()
         {
             InitializeComponent();
-
-            Logger = DependencyService.Resolve<ILogger>();
             CreatePages();
         }
 

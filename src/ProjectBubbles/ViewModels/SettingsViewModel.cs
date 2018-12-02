@@ -1,15 +1,9 @@
-﻿using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Essentials;
 using System.IO;
 using System;
 using SQLite;
-using Models;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using ProjectBubbles.Services;
 
 namespace ProjectBubbles.ViewModels
 {
