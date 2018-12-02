@@ -37,15 +37,13 @@ namespace ProjectBubbles.ViewModels
             LocalDatabase = new SQLiteAsyncConnection(dbPath);
             LocalDatabase.CreateTableAsync<Settings>().Wait();
 
+            LocalSettings = new Settings { ID = 0, UserName = "User" + Guid.NewGuid().ToString() };
+
             App.Logger?.Log("Settings-LoadingFromSQLite");
             Settings userSettings = await LocalDatabase.Table<Settings>().Where(i => i.ID == 0).FirstOrDefaultAsync();
             if (userSettings != null)
             {
                 LocalSettings = userSettings;
-            }
-            else
-            {
-                LocalSettings = new Settings { ID = 0, UserName = "User" + Guid.NewGuid().ToString() };
             }
         }
 
