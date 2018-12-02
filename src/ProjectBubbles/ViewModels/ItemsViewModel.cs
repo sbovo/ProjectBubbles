@@ -34,7 +34,7 @@ namespace ProjectBubbles.ViewModels
 
         private void LoadItems()
         {
-            App.Logger?.Log("ItemsPage");
+            AppConstants.Logger?.Log("ItemsPage");
             Title = Date;
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(Date));
@@ -45,7 +45,7 @@ namespace ProjectBubbles.ViewModels
                 // TODO: sbovo - The item is added to the ObservableCollection even if it is updated (and not added)
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
-                App.Logger?.Log("AddItem to DataStore");
+                AppConstants.Logger?.Log("AddItem to DataStore");
             });
         }
 

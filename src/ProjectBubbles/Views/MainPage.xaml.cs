@@ -21,7 +21,7 @@ namespace ProjectBubbles.Views
 
         private void CreatePages()
         {
-            App.Logger?.Log("MainPage");
+            AppConstants.Logger?.Log("MainPage");
             DateTime Date = DateTime.Now;
             //TODO: we need a better way to do that
             for (int i = 0; i < 11; i++)

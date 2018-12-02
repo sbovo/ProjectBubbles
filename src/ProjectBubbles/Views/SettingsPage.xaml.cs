@@ -21,7 +21,7 @@ namespace ProjectBubbles.Views
         {
             base.OnAppearing();
             viewModel.InitCommand.Execute(null);
-            App.Logger?.Log("Settings-OnAppearing");
+            AppConstants.Logger?.Log("Settings-OnAppearing");
         }
 
 
@@ -29,7 +29,7 @@ namespace ProjectBubbles.Views
         {
             base.OnDisappearing();
             viewModel.SaveSettingsCommand.Execute(null);
-            App.Logger?.Log("Settings-OnDisappearing");
+            AppConstants.Logger?.Log("Settings-OnDisappearing");
         }
     }
 }

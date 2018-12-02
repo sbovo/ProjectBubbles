@@ -29,21 +29,22 @@ namespace ProjectBubbles.ViewModels
 
         private async Task ExecuteInitCommand()
         {
-
+            // TODO: Refactor the SQLite code
+            // TODO: Close the SQLite database
             string dbPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "settings.db3");
-
             LocalDatabase = new SQLiteAsyncConnection(dbPath);
             LocalDatabase.CreateTableAsync<Settings>().Wait();
 
             LocalSettings = new Settings { ID = 0, UserName = "User" + Guid.NewGuid().ToString() };
 
-            App.Logger?.Log("Settings-LoadingFromSQLite");
+            AppConstants.Logger?.Log("Settings-LoadingFromSQLite");
             Settings userSettings = await LocalDatabase.Table<Settings>().Where(i => i.ID == 0).FirstOrDefaultAsync();
             if (userSettings != null)
             {
                 LocalSettings = userSettings;
+                AppConstants.Logger?.Log("Settings-LoadingFromSQLite-" + userSettings.UserName);
             }
         }
 
@@ -51,17 +52,19 @@ namespace ProjectBubbles.ViewModels
         {
             try
             {
-                App.Logger?.Log("Settings-LoadingFromSQLite");
+                AppConstants.Logger?.Log("Settings-LoadingFromSQLite");
                 Settings userSettings = await LocalDatabase.Table<Settings>().Where(i => i.ID == 0).FirstOrDefaultAsync();
                 if (userSettings == null)
                 {
-                    App.Logger?.Log("Settings-InsertSQLite");
+                    AppConstants.Logger?.Log("Settings-InsertSQLite");
+                    AppConstants.Logger?.Log("Settings-InsertSQLite-" + LocalSettings.UserName);
                     await LocalDatabase.InsertAsync(LocalSettings);
                 }
                 else
                 {
-                    App.Logger?.Log("Settings-UpdateSQLite");
-
+                    AppConstants.Logger?.Log("Settings-LoadingFromSQLite-" + userSettings.UserName);
+                    AppConstants.Logger?.Log("Settings-UpdateSQLite");
+                    AppConstants.Logger?.Log("Settings-UpdateSQLite-" + LocalSettings.UserName);
                     await LocalDatabase.UpdateAsync(LocalSettings);
                 }
             }

@@ -10,7 +10,7 @@ namespace ProjectBubbles.ViewModels
         public Item Item { get; set; }
         public ItemDetailViewModel(Item item = null)
         {
-            App.Logger?.Log("ItemDetailPage");
+            AppConstants.Logger?.Log("ItemDetailPage");
             Title = item?.UserName;
             Item = item;
         }
