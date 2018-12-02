@@ -8,7 +8,7 @@ namespace ProjectBubbles
 {
     public class Settings
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int ID { get; set; }
         public string UserName { get; set; }
     }
