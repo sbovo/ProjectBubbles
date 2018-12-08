@@ -41,6 +41,7 @@ namespace ProjectBubbles.ViewModels
                 AppConstants.Logger?.Log("Settings-LoadingFromSQLite-" + userSettings.UserName);
             }
         }
+                  
 
         async Task SaveSettings()
         {
@@ -66,8 +67,6 @@ namespace ProjectBubbles.ViewModels
             {
                 throw;
             }
-
-
         }
 
         public ICommand SaveSettingsCommand { get; }
@@ -82,5 +81,7 @@ namespace ProjectBubbles.ViewModels
             get { return localSetting; }
             set { SetProperty(ref localSetting, value); }
         }
+
+        public Extensions.ImageCloudExtension PhotoImageSource { get; set; }
     }
 }

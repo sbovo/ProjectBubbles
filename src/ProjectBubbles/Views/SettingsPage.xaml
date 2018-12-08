@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectBubbles.Views.SettingsPage"
              xmlns:vm="clr-namespace:ProjectBubbles.ViewModels"
+             xmlns:ext="clr-namespace:ProjectBubbles.Extensions"
              Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:SettingsViewModel />
@@ -21,14 +22,27 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                        <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <StackLayout>
+                    <ContentView>
+                        <Image Source="{ext:ImageCloud sbovo}" VerticalOptions="Center" HeightRequest="100" />
+                        <!--<Image Source="{Binding PhotoImageSource}" VerticalOptions="Center" HeightRequest="100" />-->
                     </ContentView>
                 </StackLayout>
 
-                <StackLayout Spacing="20" Padding="15">
+                <StackLayout>
+                    <ContentView>
+                        <Image Source="{ext:ImageCloud sbov2o}" VerticalOptions="Center" HeightRequest="100" />
+                        <!--<Image Source="{Binding PhotoImageSource}" VerticalOptions="Center" HeightRequest="100" />-->
+                    </ContentView>
+                </StackLayout>
+                <StackLayout>
+                    <ContentView>
+                        <Image Source="{ext:ImageCloud sbovo}" VerticalOptions="Center" HeightRequest="100" />
+                        <!--<Image Source="{Binding PhotoImageSource}" VerticalOptions="Center" HeightRequest="100" />-->
+                    </ContentView>
+                </StackLayout>
+                <StackLayout >
                     <Label Text="UserName" FontSize="Medium" />
                     <Entry Text="{Binding LocalSettings.UserName, Mode=TwoWay}" FontSize="Small" />
                     <!--<Button Margin="0,10,0,0" Text="Save" Command="{Binding SaveSettingsCommand}" BackgroundColor="{StaticResource Primary}" TextColor="White" />-->

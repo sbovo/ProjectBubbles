@@ -11,5 +11,7 @@ namespace ProjectBubbles
         [PrimaryKey]
         public int ID { get; set; }
         public string UserName { get; set; }
+        public string Photo { get; set; }
+        //public Xamarin.Forms.ImageSource PhotoImageSource { get; set; }
     }
 }
