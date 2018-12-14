@@ -26,22 +26,15 @@
                 <StackLayout>
                     <ContentView>
                         <Image Source="{ext:ImageCloud sbovo}" VerticalOptions="Center" HeightRequest="100" />
-                        <!--<Image Source="{Binding PhotoImageSource}" VerticalOptions="Center" HeightRequest="100" />-->
                     </ContentView>
                 </StackLayout>
 
                 <StackLayout>
                     <ContentView>
-                        <Image Source="{ext:ImageCloud sbov2o}" VerticalOptions="Center" HeightRequest="100" />
-                        <!--<Image Source="{Binding PhotoImageSource}" VerticalOptions="Center" HeightRequest="100" />-->
+                        <Image Source="{ext:ImageCloud sbovo2}" VerticalOptions="Center" HeightRequest="100" />
                     </ContentView>
                 </StackLayout>
-                <StackLayout>
-                    <ContentView>
-                        <Image Source="{ext:ImageCloud sbovo}" VerticalOptions="Center" HeightRequest="100" />
-                        <!--<Image Source="{Binding PhotoImageSource}" VerticalOptions="Center" HeightRequest="100" />-->
-                    </ContentView>
-                </StackLayout>
+                
                 <StackLayout >
                     <Label Text="UserName" FontSize="Medium" />
                     <Entry Text="{Binding LocalSettings.UserName, Mode=TwoWay}" FontSize="Small" />

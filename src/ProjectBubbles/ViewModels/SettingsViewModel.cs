@@ -17,8 +17,6 @@ namespace ProjectBubbles.ViewModels
            
             InitCommand = new Command(async () => await ExecuteInitCommand());
             SaveSettingsCommand = new Command(async () => await SaveSettings());
-
-           
         }
 
         private async Task ExecuteInitCommand()
