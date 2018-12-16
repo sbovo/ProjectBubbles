@@ -17,14 +17,14 @@ namespace ProjectBubbles.Controllers
         }
 
         [HttpGet("{id}")]
-        public Item GetItem(string id)
+        public Profile GetItem(string id)
         {
-            Item item = ProfileRepository.Get(id);
+            Profile item = ProfileRepository.Get(id);
             return item;
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]Item item)
+        public IActionResult Create([FromBody]Profile item)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace ProjectBubbles.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] Item item)
+        public IActionResult Edit([FromBody] Profile item)
         {
             try
             {

@@ -7,10 +7,10 @@ namespace ProjectBubbles.Models
     public interface IProfileRepository
     {
         #region "Default methods for the Interface"
-        Task Add(Item item);
-        void Update(Item item);
-        Item Remove(string key);
-        Item Get(string id);
+        Task Add(Profile profile);
+        void Update(Profile profile);
+        Profile Remove(string id);
+        Profile Get(string id);
         #endregion
     }
 }
