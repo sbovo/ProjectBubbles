@@ -9,11 +9,12 @@ The start is a Xamarin cross platform app and an ASP.NET Core backend on Azure.
 - Multipages applications that allows users to enter their activity/feeling for the upcoming 10 days
 - UWP and Android app available
 - Azure ASP.NET Core Rest API
-- Azure Table Storage
+- Azure Table Storage for data and profiles (2 tables)
 
 # Application Log
 | Date | Action type | Comments |
 |------|-------------|----------|
+2018-12-16|Feature|MobileAppService supports storing profiles
 2018-12-01|Feature|Settings page using SQLite (Username saved locally)
 2018-11-23|Feature|Multi-tabs/pages for the 10 upcoming days
 2018-11-23|Feature|AppCenter Analytics and Crashes for the UWP and Android app
