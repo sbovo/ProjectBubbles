@@ -4,12 +4,14 @@ using Xamarin.Forms;
 using System.IO;
 using System;
 using SQLite;
+using ProjectBubbles.Services;
+using ProjectBubbles.Models;
 
 namespace ProjectBubbles.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-       
+        public IProfileStore<Profile> DataStore = DependencyService.Get<IProfileStore<Profile>>();
 
         public SettingsViewModel()
         {
@@ -38,6 +40,9 @@ namespace ProjectBubbles.ViewModels
                 LocalSettings = userSettings;
                 AppConstants.Logger?.Log("Settings-LoadingFromSQLite-" + userSettings.UserName);
             }
+
+            //await DataStore.AddItemAsync()
+            //await DataStore.AddItemAsync(newItem);
         }
                   
 

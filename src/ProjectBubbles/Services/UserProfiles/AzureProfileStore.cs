@@ -24,8 +24,13 @@ namespace ProjectBubbles.Services
 
         public async Task<Profile> GetItemAsync(string id)
         {
-            // TODO: Implement
-            return new Profile{ };
+            if (id != null)
+            {
+                var json = await client.GetStringAsync($"api/profile/{id}");
+                return await Task.Run(() => JsonConvert.DeserializeObject<Profile>(json));
+            }
+
+            return null;
         }
 
         public async Task<bool> AddItemAsync(Profile profile)
@@ -35,10 +40,10 @@ namespace ProjectBubbles.Services
 
             var serializedItem = JsonConvert.SerializeObject(profile);
 
-            var response = await client.PostAsync($"api/item", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+            var response = await client.PostAsync($"api/profile", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
 
 
-            AppConstants.Logger?.Log("AzureDataStore-AddItemAsync",
+            AppConstants.Logger?.Log("AzureProfileStore-AddItemAsync",
                 new Dictionary<string, string> { { "Result", response.StatusCode.ToString() } });
             return response.IsSuccessStatusCode;
         }
@@ -46,13 +51,13 @@ namespace ProjectBubbles.Services
         public async Task<bool> UpdateItemAsync(Profile item)
         {
             // TODO: Implement
-            return true;
+            return false;
         }
 
         public async Task<bool> DeleteItemAsync(string id)
         {
             // TODO: Implement
-            return true;
+            return false;
         }
     }
 }

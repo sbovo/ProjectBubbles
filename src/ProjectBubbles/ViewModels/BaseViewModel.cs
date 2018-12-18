@@ -12,7 +12,7 @@ namespace ProjectBubbles.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        
 
         bool isBusy = false;
         public bool IsBusy
