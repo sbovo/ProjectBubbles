@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using ProjectBubbles.Models;
@@ -16,10 +17,10 @@ namespace ProjectBubbles.Controllers
             ProfileRepository = profileRepository;
         }
 
-        [HttpGet("{id}")]
-        public Profile GetItem(string id)
+        [HttpGet("{UserName}")]
+        public async Task<Profile> GetItem(string UserName)
         {
-            Profile item = ProfileRepository.Get(id);
+            Profile item = await ProfileRepository.Get(UserName);
             return item;
         }
 

@@ -24,9 +24,15 @@ namespace ProjectBubbles.Models
             table = Common.CreateTableAsync("UserProfiles").GetAwaiter().GetResult();
         }
 
-        public Profile Get(string id)
+        public async Task<Profile> Get(string UserName)
         {
-            return items[id];
+            ProfileItem pi = await SamplesUtils.RetrieveProfileAsync(table, "1", UserName);
+            return new Profile
+            {
+                UserId = "1",
+                UserName = pi.Username,
+                PhotoBase64Encoded = pi.PhotoBase64Encoded
+            };
         }
 
         public async Task Add(Profile item)

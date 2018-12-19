@@ -9,8 +9,8 @@ namespace ProjectBubbles.Models
         #region "Default methods for the Interface"
         Task Add(Profile profile);
         void Update(Profile profile);
-        Profile Remove(string id);
-        Profile Get(string id);
+        Profile Remove(string UserName);
+        Task<Profile> Get(string UserName);
         #endregion
     }
 }
