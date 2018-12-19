@@ -24,6 +24,7 @@ namespace ProjectBubbles
             else
                 DependencyService.Register<AzureDataStore>();
 
+            DependencyService.Register<AzureProfileStore>();
             DependencyService.Register<ILogger, AppCenterLogger>();
             AppConstants.Logger = DependencyService.Resolve<ILogger>();
 

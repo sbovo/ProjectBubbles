@@ -11,7 +11,7 @@ namespace ProjectBubbles.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        public IProfileStore<Profile> DataStore = DependencyService.Get<IProfileStore<Profile>>();
+        public IProfileStore<Profile> DataStore => DependencyService.Get<IProfileStore<Profile>>() ?? null;
 
         public SettingsViewModel()
         {
@@ -41,8 +41,14 @@ namespace ProjectBubbles.ViewModels
                 AppConstants.Logger?.Log("Settings-LoadingFromSQLite-" + userSettings.UserName);
             }
 
-            //await DataStore.AddItemAsync()
-            //await DataStore.AddItemAsync(newItem);
+            Profile profileFromAzure = await DataStore.GetItemAsync("sbovo");
+            if (profileFromAzure == null)
+            {
+                Profile p = new Profile { UserId = "1", UserName = LocalSettings.UserName, PhotoBase64Encoded = "" };
+                await DataStore.AddItemAsync(p);
+            }
+
+            
         }
                   
 

@@ -19,14 +19,17 @@ namespace ProjectBubbles.Services
 
         public AzureProfileStore()
         {
-           
+            client = new HttpClient();
+            client.BaseAddress = new Uri($"{AppConstants.AzureBackendUrl}/");
+
+            items = new List<Item>();
         }
 
-        public async Task<Profile> GetItemAsync(string id)
+        public async Task<Profile> GetItemAsync(string UserName)
         {
-            if (id != null)
+            if (UserName != null)
             {
-                var json = await client.GetStringAsync($"api/profile/{id}");
+                var json = await client.GetStringAsync($"api/profile/{UserName}");
                 return await Task.Run(() => JsonConvert.DeserializeObject<Profile>(json));
             }
 
