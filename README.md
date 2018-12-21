@@ -19,6 +19,7 @@ The start is a Xamarin cross platform app and an ASP.NET Core backend on Azure.
 2018-11-23|Feature|Multi-tabs/pages for the 10 upcoming days
 2018-11-23|Feature|AppCenter Analytics and Crashes for the UWP and Android app
 2018-11-19|Feature|One page for one team one day
+2018/12/21|Feature|Get base64 image profil from Azure Table using IValueConverter
 
 
 # Project Log
@@ -30,6 +31,7 @@ The start is a Xamarin cross platform app and an ASP.NET Core backend on Azure.
 2018-11-19|Feature|First preview version (UWP and Android) working for one team one day
 2018-11-17|Feature|Using Azure Table storage
 2018-11-14|Feature|Project startup: One team
+2018-12-13|Technical|Save/Get image for profile encoded in base64
 
 
 # Automated Builds
