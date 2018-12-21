@@ -7,15 +7,68 @@ using Xamarin.Forms.Internals;
 using ProjectBubbles.Models;
 using ProjectBubbles.Services;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace ProjectBubbles.Extensions
 {
     // You exclude the 'Extension' suffix when using in Xaml markup
     [Preserve(AllMembers = true)]
+    [ContentProperty("Source")]
+    public class ImageAzureExtension : BindableObject, IMarkupExtension
+    {
+        public static readonly BindableProperty SourceProperty = BindableProperty.Create(nameof(Source),
+            typeof(string), typeof(string), null);
+        public string Source
+        {
+            get { return (string)GetValue(SourceProperty); }
+            set { SetValue(SourceProperty, value); }
+        }
+
+        public object ProvideValue(IServiceProvider serviceProvider)
+        {
+            if (Source == null)
+                return null;
+
+            IProfileStore<Profile> DataStore = DependencyService.Get<IProfileStore<Profile>>();
+            Profile profileFromAzure = null;
+            Task.Run(async () =>
+            {
+                try
+                {
+                    profileFromAzure = await DataStore.GetItemAsync(Source);
+                }
+                catch (Exception ex)
+                {
+                    AppConstants.Logger?.Log("ImageAzureExtension-Exception");
+                }
+
+                return true;
+            }).Wait();
+
+
+            string s = string.Empty;
+            if (profileFromAzure != null)
+            {
+                s = profileFromAzure.PhotoBase64Encoded;
+
+                Byte[] buffer = Convert.FromBase64String(s);
+                Xamarin.Forms.ImageSource imageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(buffer));
+                System.Diagnostics.Debug.WriteLine(Source);
+
+                return imageSource;
+            }
+            return null;
+        }
+    }
+
+
+    // You exclude the 'Extension' suffix when using in Xaml markup
+    [Preserve(AllMembers = true)]
     [ContentProperty(nameof(Source))]
-    public class ImageCloudExtension : IMarkupExtension
+    public class ImageCloudExtension : IMarkupExtension<BindingBase>
     {
         public string Source { get; set; }
+        public string Img { get; set; }
 
         public object ProvideValue(IServiceProvider serviceProvider)
         {
@@ -35,10 +88,10 @@ namespace ProjectBubbles.Extensions
                 {
                     AppConstants.Logger?.Log("ImageCloudExtension-Exception");
                 }
-                
+
                 return true;
             }).Wait();
-             
+
 
             string s = string.Empty;
             if (profileFromAzure != null)
@@ -61,7 +114,58 @@ namespace ProjectBubbles.Extensions
             //}
             return null;
 
-            
+
         }
+
+        BindingBase IMarkupExtension<BindingBase>.ProvideValue(IServiceProvider serviceProvider)
+        {
+            if (Source == null)
+                return null;
+
+
+            IProfileStore<Profile> DataStore = DependencyService.Get<IProfileStore<Profile>>();
+            Profile profileFromAzure = null;
+            Task.Run(async () =>
+            {
+                try
+                {
+                    profileFromAzure = await DataStore.GetItemAsync(Source);
+                }
+                catch (Exception ex)
+                {
+                    AppConstants.Logger?.Log("ImageCloudExtension-Exception");
+                }
+
+                return true;
+            }).Wait();
+
+
+            string s = string.Empty;
+            if (profileFromAzure != null)
+            {
+                s = profileFromAzure.PhotoBase64Encoded;
+
+                Byte[] buffer = Convert.FromBase64String(s);
+                Xamarin.Forms.ImageSource imageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(buffer));
+                System.Diagnostics.Debug.WriteLine(Source);
+
+                return null;// new Binding("Source", BindingMode.OneWay, converter: converter, converterParameter: Key);
+            }
+            return null;
+        }
+
+
     }
+
+    //class ImageSourceConverter : IValueConverter
+    //{
+
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //    }
+    //}
 }

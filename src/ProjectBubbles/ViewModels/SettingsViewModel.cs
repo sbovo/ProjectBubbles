@@ -91,6 +91,8 @@ namespace ProjectBubbles.ViewModels
             set { SetProperty(ref localSetting, value); }
         }
 
-        public Extensions.ImageCloudExtension PhotoImageSource { get; set; }
+        public Extensions.ImageAzureExtension PhotoImageSource { get; set; }
+        public Extensions.ImageCloudExtension PhotoImageSource2 { get; set; }
+
     }
 }

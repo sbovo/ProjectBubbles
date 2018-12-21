@@ -4,12 +4,15 @@
              x:Class="ProjectBubbles.Views.SettingsPage"
              xmlns:vm="clr-namespace:ProjectBubbles.ViewModels"
              xmlns:ext="clr-namespace:ProjectBubbles.Extensions"
+             xmlns:conv="clr-namespace:ProjectBubbles.Converters"
              Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:SettingsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
+            <!--Converters -->
+            <conv:Base64StringImageConverter x:Key="base64Image" />
             <!--Page Level Resources: Compatibile with Xamarin Live Player -->
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="Accent">#96d1ff</Color>
@@ -23,18 +26,23 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+
                 <StackLayout>
                     <ContentView>
-                        <Image Source="{ext:ImageCloud sbovo}" VerticalOptions="Center" HeightRequest="100" />
+                        <Image Source="{Binding LocalSettings.UserName, Converter={StaticResource base64Image}}" 
+                               VerticalOptions="Center" HeightRequest="100" />
                     </ContentView>
                 </StackLayout>
 
                 <StackLayout>
                     <ContentView>
-                        <Image Source="{ext:ImageCloud sbovo2}" VerticalOptions="Center" HeightRequest="100" />
+                        <Image Source="{ext:ImageAzure Source=sbovo}" 
+                               VerticalOptions="Center" HeightRequest="100" />
                     </ContentView>
                 </StackLayout>
-                
+
+
                 <StackLayout >
                     <Label Text="UserName" FontSize="Medium" />
                     <Entry Text="{Binding LocalSettings.UserName, Mode=TwoWay}" FontSize="Small" />
