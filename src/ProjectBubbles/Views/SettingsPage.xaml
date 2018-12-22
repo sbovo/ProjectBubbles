@@ -29,23 +29,17 @@
 
 
                 <StackLayout>
-                    <ContentView>
+                    <ContentView Margin="0,10,0,0" >
                         <Image Source="{Binding LocalSettings.UserName, Converter={StaticResource base64Image}}" 
                                VerticalOptions="Center" HeightRequest="100" />
                     </ContentView>
-                </StackLayout>
-
-                <StackLayout>
-                    <ContentView>
-                        <Image Source="{ext:ImageAzure Source=sbovo}" 
-                               VerticalOptions="Center" HeightRequest="100" />
-                    </ContentView>
+                    <Button Margin="0,10,0,0" Text="Change picture" Command="{Binding ChangePictureCommand}" BackgroundColor="{StaticResource Primary}" TextColor="White" />
                 </StackLayout>
 
 
                 <StackLayout >
-                    <Label Text="UserName" FontSize="Medium" />
-                    <Entry Text="{Binding LocalSettings.UserName, Mode=TwoWay}" FontSize="Small" />
+                    <Label Text="UserName" FontSize="Medium"  />
+                    <Entry Text="{Binding LocalSettings.UserName, Mode=TwoWay}" FontSize="Small" MinimumWidthRequest="15" />
                     <!--<Button Margin="0,10,0,0" Text="Save" Command="{Binding SaveSettingsCommand}" BackgroundColor="{StaticResource Primary}" TextColor="White" />-->
                 </StackLayout>
             </StackLayout>

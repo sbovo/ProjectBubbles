@@ -19,6 +19,11 @@ namespace ProjectBubbles.ViewModels
            
             InitCommand = new Command(async () => await ExecuteInitCommand());
             SaveSettingsCommand = new Command(async () => await SaveSettings());
+            ChangePictureCommand = new Command(async () => await ChangePicture());
+        }
+
+        private async Task ChangePicture()
+        {
         }
 
         private async Task ExecuteInitCommand()
@@ -80,6 +85,7 @@ namespace ProjectBubbles.ViewModels
 
         public ICommand SaveSettingsCommand { get; }
         public ICommand InitCommand { get; }
+        public ICommand ChangePictureCommand { get; }
 
         public SQLiteAsyncConnection LocalDatabase { get; set; }
 
