@@ -31,5 +31,10 @@ namespace ProjectBubbles.Views
             viewModel.SaveSettingsCommand.Execute(null);
             AppConstants.Logger?.Log("Settings-OnDisappearing");
         }
+
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.UserNameChangeCommand.Execute(null);
+        }
     }
 }

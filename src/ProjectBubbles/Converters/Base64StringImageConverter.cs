@@ -13,38 +13,23 @@ namespace ProjectBubbles.Converters
     {
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string UserName = value as string;
-            if (UserName == null || String.IsNullOrEmpty(UserName))
+            string base64 = value as string;
+            if (base64 == null || String.IsNullOrEmpty(base64))
             {
                 return null;
             }
-            IProfileStore<Profile> DataStore = DependencyService.Get<IProfileStore<Profile>>();
-            Profile profileFromAzure = null;
-            Task.Run(async () =>
+
+            try
             {
-                try
-                {
-                    profileFromAzure = await DataStore.GetItemAsync(UserName);
-                }
-                catch (Exception ex)
-                {
-                    AppConstants.Logger?.Log("ImageAzureExtension-Exception");
-                }
-
-                return true;
-            }).Wait();
-
-
-            string s = string.Empty;
-            if (profileFromAzure != null)
-            {
-                s = profileFromAzure.PhotoBase64Encoded;
-
-                Byte[] buffer = Convert.FromBase64String(s);
-                Xamarin.Forms.ImageSource imageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(buffer));
+                Byte[] buffer = Convert.FromBase64String(base64);
+                Xamarin.Forms.ImageSource imageSource = Xamarin.Forms.ImageSource.FromStream(() =>
+                    new System.IO.MemoryStream(buffer));
                 System.Diagnostics.Debug.WriteLine(value);
 
                 return imageSource;
+            }
+            catch (Exception ex)
+            {
             }
             return null;
         }

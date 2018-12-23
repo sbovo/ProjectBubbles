@@ -21,10 +21,20 @@ namespace ProjectBubbles.ViewModels
             InitCommand = new Command(async () => await ExecuteInitCommand());
             SaveSettingsCommand = new Command(async () => await SaveSettings());
             ChangePictureCommand = new Command(async () => await ChangePicture());
+            UserNameChangeCommand = new Command(async () => await UserNameChange());
+
+        }
+
+
+        private async Task UserNameChange()
+        {
+            await Load();
+            OnPropertyChanged("LocalSettings");
         }
 
         private async Task ChangePicture()
         {
+            //https://github.com/jamesmontemagno/MediaPlugin
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -52,7 +62,13 @@ namespace ProjectBubbles.ViewModels
             }
             string _b64 = Convert.ToBase64String(bytes);
             // We have the correct base64 encoded image in _b64
-
+            LocalSettings.Photo = _b64;
+            //ImgSource = LocalSettings.Photo;
+            Task.Run(async () =>
+            {
+                await SaveSettings();
+            }).Wait();
+            OnPropertyChanged("LocalSettings");
             //image.Source = ImageSource.FromStream(() =>
             //{
             //    var stream = file.GetStream();
@@ -71,25 +87,47 @@ namespace ProjectBubbles.ViewModels
             LocalDatabase.CreateTableAsync<Settings>().Wait();
 
             LocalSettings = new Settings { ID = 0, UserName = "User" + Guid.NewGuid().ToString() };
-
             AppConstants.Logger?.Log("Settings-LoadingFromSQLite");
-            Settings userSettings = await LocalDatabase.Table<Settings>().Where(i => i.ID == 0).FirstOrDefaultAsync();
+            Settings userSettings = await LocalDatabase.Table<Settings>().Where(i => i.ID == 0).FirstAsync();
             if (userSettings != null)
             {
                 LocalSettings = userSettings;
+                //ImgSource = LocalSettings.Photo;
                 AppConstants.Logger?.Log("Settings-LoadingFromSQLite-" + userSettings.UserName);
+                await Load();
             }
-
-            Profile profileFromAzure = await DataStore.GetItemAsync("sbovo");
-            if (profileFromAzure == null)
-            {
-                Profile p = new Profile { UserId = "1", UserName = LocalSettings.UserName, PhotoBase64Encoded = "" };
-                await DataStore.AddItemAsync(p);
-            }
-
-
         }
 
+        private async Task Load()
+        {
+            Profile profileFromAzure = null;
+            try
+            {
+                profileFromAzure = await DataStore.GetItemAsync(LocalSettings.UserName);
+            }
+            catch (Exception)
+            {
+
+                
+            }
+             
+            if (profileFromAzure == null)
+            {
+                Profile p = new Profile
+                {
+                    UserId = "1",
+                    UserName = LocalSettings.UserName,
+                    PhotoBase64Encoded = "not set"
+                };
+                await DataStore.AddItemAsync(p);
+            }
+            else
+            {
+                LocalSettings = new Settings { ID=0,
+                    UserName = profileFromAzure.UserName,
+                    Photo = profileFromAzure.PhotoBase64Encoded };
+            }
+        }
 
         async Task SaveSettings()
         {
@@ -115,21 +153,42 @@ namespace ProjectBubbles.ViewModels
             {
                 throw;
             }
+
+            try
+            {
+                AppConstants.Logger?.Log("Settings-SaveSettings-Azure-AddItemAsync" + LocalSettings.UserName);
+                Profile p = new Profile { UserId = "1", UserName = LocalSettings.UserName, PhotoBase64Encoded = LocalSettings.Photo };
+                await DataStore.AddItemAsync(p);
+            }
+            catch (Exception ex)
+            {
+                AppConstants.Logger?.Log($"EXCEPTION: {ex.Message}");
+            }
+
+
         }
 
         public ICommand SaveSettingsCommand { get; }
         public ICommand InitCommand { get; }
         public ICommand ChangePictureCommand { get; }
+        public ICommand UserNameChangeCommand { get; }
 
         public SQLiteAsyncConnection LocalDatabase { get; set; }
 
 
-        private Settings localSetting;
+        private Settings localSettings;
         public Settings LocalSettings
         {
-            get { return localSetting; }
-            set { SetProperty(ref localSetting, value); }
+            get { return localSettings; }
+            set { SetProperty(ref localSettings, value); }
         }
+
+        //private ImageSource imgSource;
+        //public ImageSource ImgSource
+        //{
+        //    get { return imgSource; }
+        //    set { SetProperty(ref imgSource, value); }
+        //}
 
         public Extensions.ImageAzureExtension PhotoImageSource { get; set; }
         public Extensions.ImageCloudExtension PhotoImageSource2 { get; set; }
