@@ -6,6 +6,7 @@ using System;
 using SQLite;
 using ProjectBubbles.Services;
 using ProjectBubbles.Models;
+using Plugin.Media;
 
 namespace ProjectBubbles.ViewModels
 {
@@ -16,7 +17,7 @@ namespace ProjectBubbles.ViewModels
         public SettingsViewModel()
         {
             Title = "Settings";
-           
+
             InitCommand = new Command(async () => await ExecuteInitCommand());
             SaveSettingsCommand = new Command(async () => await SaveSettings());
             ChangePictureCommand = new Command(async () => await ChangePicture());
@@ -24,6 +25,39 @@ namespace ProjectBubbles.ViewModels
 
         private async Task ChangePicture()
         {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                System.Diagnostics.Debug.WriteLine("No Camera", ":( No camera available.", "OK");
+                return;
+            }
+
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                Directory = "Sample",
+                Name = "test.jpg"
+            });
+
+            if (file == null)
+                return;
+            var bytes = default(byte[]);
+            using (var streamReader = new StreamReader(file.Path))
+            {
+                using (var memstream = new MemoryStream())
+                {
+                    streamReader.BaseStream.CopyTo(memstream);
+                    bytes = memstream.ToArray();
+                }
+            }
+            string _b64 = Convert.ToBase64String(bytes);
+            // We have the correct base64 encoded image in _b64
+
+            //image.Source = ImageSource.FromStream(() =>
+            //{
+            //    var stream = file.GetStream();
+            //    return stream;
+            //});
         }
 
         private async Task ExecuteInitCommand()
@@ -53,9 +87,9 @@ namespace ProjectBubbles.ViewModels
                 await DataStore.AddItemAsync(p);
             }
 
-            
+
         }
-                  
+
 
         async Task SaveSettings()
         {
