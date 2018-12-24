@@ -155,4 +155,7 @@
       <Name>ProjectBubbles</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DefaultAvatar.png" />
+  </ItemGroup>
 </Project>

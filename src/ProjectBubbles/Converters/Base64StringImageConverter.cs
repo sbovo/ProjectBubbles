@@ -31,7 +31,7 @@ namespace ProjectBubbles.Converters
             catch (Exception ex)
             {
             }
-            return null;
+            return ImageSource.FromFile("DefaultAvatar.png");
         }
 
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
