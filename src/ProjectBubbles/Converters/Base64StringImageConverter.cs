@@ -30,6 +30,8 @@ namespace ProjectBubbles.Converters
             }
             catch (Exception ex)
             {
+                AppConstants.Logger?.LogError(ex, 
+                    new Dictionary<string, string>{ { "Class" , "Base64StringImageConverter" } });
             }
             return ImageSource.FromFile("DefaultAvatar.png");
         }

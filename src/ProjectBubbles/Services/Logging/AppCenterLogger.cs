@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using System;
 using System.Collections.Generic;
 
 namespace ProjectBubbles.Services
@@ -17,6 +18,11 @@ namespace ProjectBubbles.Services
         public void Log(string name, IDictionary<string, string> properties = null)
         {
             Analytics.TrackEvent(name, properties);
+        }
+
+        public void LogError(Exception ex, IDictionary<string, string> properties = null)
+        {
+            Crashes.TrackError(ex, properties);
         }
     }
 }
