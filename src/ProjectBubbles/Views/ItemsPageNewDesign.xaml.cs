@@ -17,18 +17,18 @@ namespace ProjectBubbles.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemsPageNewDesign : ContentPage
     {
-        ItemsViewModel viewModel;
+        ItemsNewDesignViewModel viewModel;
 
         public ItemsPageNewDesign()
         {
             InitializeComponent();
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new ItemsNewDesignViewModel();
         }
 
         public ItemsPageNewDesign(string id)
         {
             InitializeComponent();
-            BindingContext = viewModel = new ItemsViewModel(id);
+            BindingContext = viewModel = new ItemsNewDesignViewModel(id);
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -52,8 +52,10 @@ namespace ProjectBubbles.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
+            if (viewModel.ItemsGrouped.Count == 0)
+            {
                 viewModel.LoadItemsCommand.Execute(null);
+            }
         }
     }
 }
